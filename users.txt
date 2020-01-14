@@ -1,0 +1,8 @@
+username: thanos01 
+password: Karoupass3@
+
+username: mitsos01
+password: mitsospassA7#
+
+username: kostasboost
+password: Boostpass6@
