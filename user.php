@@ -55,5 +55,6 @@ session_start();
     <form action="actions/uploadaction.php">
         <input type="file" id="myFile">
         <input type="submit">
+    </form>
 </body>
 </html>
