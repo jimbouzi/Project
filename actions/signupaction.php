@@ -71,7 +71,7 @@
 
          mysqli_stmt_bind_param($stmt, "ssssss",$userid, $usern, $nam, $surnam, $mail, $hashedPwd);
          mysqli_stmt_execute($stmt);
-         header("Location: ../user.html?signup=success");
+         header("Location: ../user.php?signup=success");
          exit();
         }
       }

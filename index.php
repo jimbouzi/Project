@@ -15,7 +15,7 @@
           <center>
             <?php
               if (isset($_GET['error'])){
-                if($_GET['error'] == "no_user"){
+                if($_GET['error'] == "loginerror"){
                   echo '<p class="loginerror">Username or passowrd are incorrect.</p>';
                 }
               }
@@ -218,8 +218,6 @@
               <input class="form-btn" name="signupsubmit" type="submit" value="Submit" />
         </center></form>
 </div>
-
-
 
 </body>
 </html>

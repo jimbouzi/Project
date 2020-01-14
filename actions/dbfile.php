@@ -2,7 +2,7 @@
 $servername= "localhost";
 $dBUsername= "root";
 $dBPassword = "";
-$dBName = "ecoApp";
+$dBName = "ecoapp";
 $conn =  mysqli_connect($servername, $dBUsername, $dBPassword, $dBName);
 if(!$conn){
   die("Connection Failed: ".mysqli_connect_error());
