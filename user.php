@@ -8,16 +8,21 @@ session_start();
     <h1 style="text-align:center">Welcome to the user page, <?php echo $_SESSION['sesusername'] ?>!</h1>
     <link rel="stylesheet" href="css/w3css.css"/>
     <link rel="stylesheet" href="leaflet/leaflet.css"/>
+	<link href="../css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css"/>
         <style>
-              #mapid {height: 50%;
+              #map {height: 50%;
                       width: 50%;
                       margin: "auto"}
         </style>
 </head>
 <body>
-    <div id="mapid"></div>
-    <!--Buttons for map filtering-->
-    <div class="upBar" id=mapFilters>
+    <div id="map"></div>
+
+	         <p class="fallback">Upload your JSON file: <input name="file" type="file" id="file"></input></p>
+
+        <div class="upBar" id=mapFilters>
         <select name="year" id="year">
             <option value="">Select Year</option> <!--runs with javascript/monthDropDown.js-->
         </select>
@@ -44,17 +49,31 @@ session_start();
             <option value="6">Saturday</option>
             <option value="7">Sunday</option>
         </select>
-        <input type="time" id="hours" name="hours">        
+        <input type="time" id="hours" name="hours">
     </div>
 
-    <script src="leaflet/leaflet.js"></script>
-    <script src="heatmap/heatmap.js-master/build/heatmap.js"></script>
-    <script src="heatmap/heatmap.js-master/plugins/leaflet-heatmap/leaflet-heatmap.js"></script>
-    <script src="leaflet/map.js"> </script>
-    <script src="javascript/monthDropDown.js"></script>
-    <form action="actions/uploadaction.php">
-        <input type="file" id="myFile">
-        <input type="submit">
-    </form>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/3.8.4/dropzone.min.js"></script>
+<script src="lib/leaflet.heat.min.js"></script>
+<script src="lib/prettysize.js"></script>
+<script src="lib/oboe-browser.min.js"></script>
+<script src="index.js?v=3"></script>
+
+
+
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55418641-9', 'auto');
+  ga('send', 'pageview');
+</script>
 </body>
 </html>
