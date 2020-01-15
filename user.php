@@ -51,7 +51,7 @@ session_start();
     <script src="heatmap/heatmap.js-master/build/heatmap.js"></script>
     <script src="heatmap/heatmap.js-master/plugins/leaflet-heatmap/leaflet-heatmap.js"></script>
     <script src="leaflet/map.js"> </script>
-    <script src="javascript/monthDropDown.js"></script>
+    <script src="javascript/yearDropDown.js"></script>
     <form action="actions/uploadaction.php">
         <input type="file" id="myFile">
         <input type="submit">
