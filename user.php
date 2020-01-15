@@ -63,7 +63,8 @@ session_start();
 <script src="lib/prettysize.js"></script>
 <script src="lib/oboe-browser.min.js"></script>
 <script src="index.js?v=3"></script>
-
+<input type="file" id="myFile">
+    <input type="submit">
 
 
 	<script>
