@@ -1,8 +1,17 @@
-username: thanos01 
+username: thanos01
 password: Karoupass3@
+name: thanos
+surname: karousos
+email: thanos@gmail.com
 
 username: mitsos01
 password: mitsospassA7#
+name: mitsos
+surname: mpouziotis
+email: mitsos@gmail.com
 
 username: kostasboost
 password: Boostpass6@
+name: boost
+surname: gkagiannis
+email: boost@hotmail.com
