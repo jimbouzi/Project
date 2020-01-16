@@ -8,9 +8,6 @@ session_start();
     <h1 style="text-align:center">Welcome to the user page, <?php echo $_SESSION['sesusername'] ?>!</h1>
     <link rel="stylesheet" href="css/w3css.css"/>
     <link rel="stylesheet" href="leaflet/leaflet.css"/>
-	<link href="../css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="index.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css"/>
         <style>
               #map {height: 50%;
                       width: 50%;
@@ -56,13 +53,14 @@ session_start();
 
 
 
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/3.8.4/dropzone.min.js"></script>
 <script src="lib/leaflet.heat.min.js"></script>
 <script src="lib/prettysize.js"></script>
 <script src="lib/oboe-browser.min.js"></script>
 <script src="index.js?v=3"></script>
+<script src="javascript/yearDropDown.js"></script>
 <input type="file" id="myFile">
     <input type="submit">
 
