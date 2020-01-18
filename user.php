@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(!isset($_SESSION['sesusername'])){
+  header("Location: ../index.php");
+  exit();
+}
 ?>
 <html>
 <head>
@@ -44,7 +48,7 @@ session_start();
             <option value="6">Saturday</option>
             <option value="7">Sunday</option>
         </select>
-        <input type="time" id="hours" name="hours">        
+        <input type="time" id="hours" name="hours">
     </div>
 
     <script src="leaflet/leaflet.js"></script>
@@ -52,9 +56,13 @@ session_start();
     <script src="heatmap/heatmap.js-master/plugins/leaflet-heatmap/leaflet-heatmap.js"></script>
     <script src="leaflet/map.js"> </script>
     <script src="javascript/monthDropDown.js"></script>
-    <form action="actions/uploadaction.php">
-        <input type="file" id="myFile">
-        <input type="submit">
+    <form action="actions/uploadaction.php" method="POST" enctype="multipart/form-data">
+        <input type="file" name="jsonfile" id="myFile">
+        <button type="submit" name="uploadsubmit">Upload your json file!</button>
+    </form>
+
+    <form action="actions/logoutaction.php" method="POST">
+      <button type="submit" name="logoutsubmit">Logout</button>
     </form>
 </body>
 </html>

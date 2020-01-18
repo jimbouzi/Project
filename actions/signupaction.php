@@ -71,6 +71,9 @@
 
          mysqli_stmt_bind_param($stmt, "ssssss",$userid, $usern, $nam, $surnam, $mail, $hashedPwd);
          mysqli_stmt_execute($stmt);
+         session_start();
+         $_SESSION['sesuserId']= $userid;
+         $_SESSION['sesusername']= $usern;
          header("Location: ../user.php?signup=success");
          exit();
         }

@@ -1,4 +1,5 @@
 <?php
+if (isset($_POST['uploadsubmit'])){
 session_start();
 require 'dbfile.php';
 $userid = $_SESSION['sesuserId'];
@@ -6,7 +7,7 @@ $timest = $lat = $long = $acc = $actimest = $type = $conf = null;
 
 require_once (__DIR__.'../../json-machine/vendor/autoload.php');
 
-$jsondata = \JsonMachine\JsonMachine::fromFile('../dokimi2.json');
+$jsondata = \JsonMachine\JsonMachine::fromFile($_FILES['jsonfile']['tmp_name']);
 
 foreach($jsondata as $property => $valueA){
 	foreach ($valueA as $keyA => $val) {
@@ -58,7 +59,10 @@ foreach($jsondata as $property => $valueA){
       mysqli_stmt_execute($stmt);
     }
   }
-  $timest = $lat = $long = $acc = $acctimest = $type = $conf = null;
+  $timest = $lat = $long = $acc = $actimest = $type = $conf = null;
  }
 }
 header("Location: ../user.php?upload=succes");
+}else{
+	header("Location: ../user.php");
+}
