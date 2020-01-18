@@ -13,13 +13,13 @@ if(!isset($_SESSION['sesusername'])){
     <link rel="stylesheet" href="css/w3css.css"/>
     <link rel="stylesheet" href="leaflet/leaflet.css"/>
         <style>
-              #map {height: 50%;
+              #mapid {height: 50%;
                       width: 50%;
                       margin: "auto"}
         </style>
 </head>
 <body>
-    <div id="map"></div>
+    <div id="mapid"></div>
 
 	         <p class="fallback">Upload your JSON file: <input name="file" type="file" id="file"></input></p>
 
