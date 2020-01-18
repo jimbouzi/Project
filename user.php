@@ -13,15 +13,17 @@ if(!isset($_SESSION['sesusername'])){
     <link rel="stylesheet" href="css/w3css.css"/>
     <link rel="stylesheet" href="leaflet/leaflet.css"/>
         <style>
-              #mapid {height: 50%;
+              #map {height: 50%;
                       width: 50%;
                       margin: "auto"}
         </style>
 </head>
 <body>
-    <div id="mapid"></div>
-    <!--Buttons for map filtering-->
-    <div class="upBar" id=mapFilters>
+    <div id="map"></div>
+
+	         <p class="fallback">Upload your JSON file: <input name="file" type="file" id="file"></input></p>
+
+        <div class="upBar" id=mapFilters>
         <select name="year" id="year">
             <option value="">Select Year</option> <!--runs with javascript/monthDropDown.js-->
         </select>
