@@ -4,6 +4,8 @@ session_start();
 require 'dbfile.php';
 $userid = $_SESSION['sesuserId'];
 $timest = $lat = $long = $acc = $actimest = $type = $conf = null;
+$strlong1 = array();
+$strlong2 = array();
 
 require_once (__DIR__.'../../json-machine/vendor/autoload.php');
 
@@ -35,32 +37,24 @@ foreach($jsondata as $property => $valueA){
         break;
       }
 		}
-	//inserting data to userdata table
-  $sql = "INSERT INTO userdata (userid, timestampms, latitude, longtitude, accuracy) VALUES (?, ?, ?, ?, ?)";
-  $stmt = mysqli_stmt_init($conn);
-  if (!mysqli_stmt_prepare($stmt, $sql)){
-    header("Location: ../index.php?error=insertsqlerror1");
-    exit();
-  }
-  else{
-    mysqli_stmt_bind_param($stmt, "sssss",$userid, $timest, $lat, $long, $acc);
-    mysqli_stmt_execute($stmt);
-  }
-  //inserting data to activity table
-  if (!$actimest == null){
-    $sql = "INSERT INTO activity (userid, timestampms, type, confidence) VALUES (?, ?, ?, ?)";
-    $stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)){
-      header("Location: ../index.php?error=insertsqlerror2");
-      exit();
-    }
-    else{
-      mysqli_stmt_bind_param($stmt, "ssss",$userid, $actimest, $type, $conf);
-      mysqli_stmt_execute($stmt);
-    }
-  }
+		$str1 = "('".$userid."', '".$timest."', ".$lat.", ".$long.", ".$acc.")";
+		array_push($strlong1, $str1);
+		if (!$actimest == null){
+		$str2 = "('".$userid."', '".$actimest."', '".$type."', ".$conf.")";
+		array_push($strlong2, $str2);
+		}
   $timest = $lat = $long = $acc = $actimest = $type = $conf = null;
  }
+}
+$insertvalues = implode(", ", $strlong1);
+$sql = "INSERT INTO userdata (userid, timestampms, latitude, longtitude, accuracy) VALUES $insertvalues";
+if (!mysqli_query($conn, $sql)){
+	echo "Error: " . $sql . "<br>" . mysqli_error($conn), "<br>";
+}
+	$insertvalues = implode(", ", $strlong2);
+	$sql = "INSERT INTO activity (userid, timestampms, type, confidence) VALUES $insertvalues";
+	if (!mysqli_query($conn, $sql)){
+		echo "Error: " . $sql . "<br>" . mysqli_error($conn), "<br>";
 }
 header("Location: ../user.php?upload=succes");
 }else{
