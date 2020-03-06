@@ -18,53 +18,37 @@ if(!isset($_SESSION['sesusername'])){
                       margin: "auto"}
         </style>
 </head>
+
 <body>
+    <!--Map grid-->
     <div id="mapid"></div>
+    
+    <!--Calendar -->
+    <div class="upBar" id=mapFilters>
+        <label for="fromDate">From:</label>
+        <input type="date" id="fromDate" name="fromDate" min=<?php
+         echo date('Y-m-d');
+        ?>> 
 
-	         <p class="fallback">Upload your JSON file: <input name="file" type="file" id="file"></input></p>
-
-        <div class="upBar" id=mapFilters>
-        <select name="year" id="year">
-            <option value="">Select Year</option> <!--runs with javascript/monthDropDown.js-->
-        </select>
-        <select name="month" id="month">
-            <option selected value='1'>January</option>
-            <option value='2'>February</option>
-            <option value='3'>March</option>
-            <option value='4'>April</option>
-            <option value='5'>May</option>
-            <option value='6'>June</option>
-            <option value='7'>July</option>
-            <option value='8'>August</option>
-            <option value='9'>September</option>
-            <option value='10'>October</option>
-            <option value='11'>November</option>
-            <option value='12'>December</option>
-        </select>
-        <select name="day" id="day">
-            <option value="1">Monday</option>
-            <option value="2">Tuesday</option>
-            <option value="3">Wednesday</option>
-            <option value="4">Thursday</option>
-            <option value="5">Friday</option>
-            <option value="6">Saturday</option>
-            <option value="7">Sunday</option>
-        </select>
-        <input type="time" id="hours" name="hours">
+        <label for="toDate">To:</label>
+        <input type="date" id="toDate" name="toDate" min=<?php
+         echo date('Y-m-d');
+        ?>> 
     </div>
 
-    <script src="leaflet/leaflet.js"></script>
-    <script src="heatmap/heatmap.js-master/build/heatmap.js"></script>
-    <script src="heatmap/heatmap.js-master/plugins/leaflet-heatmap/leaflet-heatmap.js"></script>
-    <script src="leaflet/map.js"> </script>
-    <script src="javascript/monthDropDown.js"></script>
+    <!--Action buttons-->
     <form action="actions/uploadaction.php" method="POST" enctype="multipart/form-data">
         <input type="file" name="jsonfile" id="myFile">
         <button type="submit" name="uploadsubmit">Upload your json file!</button>
     </form>
-
     <form action="actions/logoutaction.php" method="POST">
       <button type="submit" name="logoutsubmit">Logout</button>
     </form>
+
+    <!--Scripts-->
+    <script src="leaflet/leaflet.js"></script>
+    <script src="heatmap/heatmap.js-master/build/heatmap.js"></script>
+    <script src="heatmap/heatmap.js-master/plugins/leaflet-heatmap/leaflet-heatmap.js"></script>
+    <script src="leaflet/map.js"> </script>
 </body>
 </html>

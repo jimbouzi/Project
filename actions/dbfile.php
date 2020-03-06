@@ -1,7 +1,7 @@
 <?php
 $servername= "localhost";
 $dBUsername= "root";
-$dBPassword = "";
+$dBPassword = "0123456";
 $dBName = "ecoapp";
 $conn =  mysqli_connect($servername, $dBUsername, $dBPassword, $dBName);
 if(!$conn){
