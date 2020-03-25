@@ -16,6 +16,82 @@ marker.on("click", markerClick);
 function markerClick(event) {
 this.getPopup().setLatLng(event.latlng).setContent("Coordinates: " + event.latlng.toString());}
 
+
+//to problima arxizei edw !!!
+// call ajax
+
+/*var ajax = new XMLHttpRequest();
+var method = "GET";
+var url = "data.php"
+var asynchronous = true;
+var vdata;
+var tdata;
+
+ajax.open(method, url, asynchronous);
+// sending ajax request
+ajax.send();
+
+// receiving response from url
+ajax.onreadystatechange = function()
+{
+
+    if (this.readyState == 4 && this.status == 200)
+    {
+        //kai sigkekrimena edw
+        tdata = JSON.parse(this.responseText);
+        vdata = {
+            max: 17000,
+            min: 0,
+            data: tdata };
+
+        console.log(tdata); //for debugging
+    }
+}*/
+
+var ajax = new XMLHttpRequest();
+var method = "GET";
+var url = "leaflet/data.php"
+var asynchronous = true;
+var vdata;
+let tdata;
+
+ajax.open(method, url, asynchronous);
+// sending ajax request
+ajax.send();
+
+// receiving response from url
+ajax.onreadystatechange = function()
+{
+
+    if (this.readyState == 4 && this.status == 200)
+    {
+        let json_data = JSON.parse(this.responseText);
+
+        console.log(json_data); //for debugging
+
+
+        vdata = {
+            max: 17000,
+            data: json_data};
+
+        console.log(vdata); //for debugging
+
+        let cfg = { "radius": 40,
+                   "maxOpacity": 0.8,
+                   "scaleRadius": false,
+                   "useLocalExtrema": false,
+                   latField: 'latitude',
+                   lngField: 'longtitude',
+                   valueField: 'accuracy'};
+
+        console.log(vdata)
+        let heatmapLayer = new HeatmapOverlay(cfg);
+        heatmapLayer.setData(vdata);
+        mymap.addLayer(heatmapLayer);
+
+    }
+}
+
 //heatmap
 
 /*let testData = {
@@ -24,17 +100,5 @@ this.getPopup().setLatLng(event.latlng).setContent("Coordinates: " + event.latln
     {lat: 38.34381, lng: 21.57074, count:8},
     {lat: 38.108628, lng: 21.502075, count:7},
     {lat: 38.123034, lng: 21.917725, count:4}]};
-
+*/
 //heatmap options
-let cfg = { "radius": 40,
-            "maxOpacity": 0.8,
-            "scaleRadius": false,
-            "useLocalExtrema": false,
-            latField: 'lat',
-            lngField: 'lng',
-            valueField: 'count'};
-			*/
-
-let heatmapLayer = new HeatmapOverlay(cfg);
-heatmapLayer.setData(testData);
-mymap.addLayer(heatmapLayer);

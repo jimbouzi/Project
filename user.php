@@ -4,6 +4,7 @@ if(!isset($_SESSION['sesusername'])){
   header("Location: ../index.php");
   exit();
 }
+require 'actions/chartaction.php';
 ?>
 <html>
 <head>
@@ -20,48 +21,67 @@ if(!isset($_SESSION['sesusername'])){
 </head>
 <body>
     <div id="mapid"></div>
+	        <!--<p class="fallback">Upload your JSON file: <input name="file" type="file" id="file"></input></p> -->
 
-	         <p class="fallback">Upload your JSON file: <input name="file" type="file" id="file"></input></p>
+      <form  name="Filter" method="POST">
+      From:
+      <input type="date" name="dateFrom"/>
+      <br/>
+      To:
+      <input type="date" name="dateTo"/>
+      <input type="submit" name="submit" value="Dates"/>
 
-        <div class="upBar" id=mapFilters>
-        <select name="year" id="year">
-            <option value="">Select Year</option> <!--runs with javascript/monthDropDown.js-->
-        </select>
-        <select name="month" id="month">
-            <option selected value='1'>January</option>
-            <option value='2'>February</option>
-            <option value='3'>March</option>
-            <option value='4'>April</option>
-            <option value='5'>May</option>
-            <option value='6'>June</option>
-            <option value='7'>July</option>
-            <option value='8'>August</option>
-            <option value='9'>September</option>
-            <option value='10'>October</option>
-            <option value='11'>November</option>
-            <option value='12'>December</option>
-        </select>
-        <select name="day" id="day">
-            <option value="1">Monday</option>
-            <option value="2">Tuesday</option>
-            <option value="3">Wednesday</option>
-            <option value="4">Thursday</option>
-            <option value="5">Friday</option>
-            <option value="6">Saturday</option>
-            <option value="7">Sunday</option>
-        </select>
-        <input type="time" id="hours" name="hours">
-    </div>
 
+  	<?php
+  	/*$new_date = strtotime($_POST['dateFrom']);
+  	echo $new_date;
+
+  	echo "<br>";
+  	$new_date2 = strtotime($_POST['dateTo']);
+  	echo $new_date2;
+    */
+  	?>
+  </form>
     <script src="leaflet/leaflet.js"></script>
     <script src="heatmap/heatmap.js-master/build/heatmap.js"></script>
     <script src="heatmap/heatmap.js-master/plugins/leaflet-heatmap/leaflet-heatmap.js"></script>
     <script src="leaflet/map.js"> </script>
-    <script src="javascript/monthDropDown.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <!--<script src="javascript/yearDropDown.js"></script>-->
     <form action="actions/uploadaction.php" method="POST" enctype="multipart/form-data">
         <input type="file" name="jsonfile" id="myFile">
         <button type="submit" name="uploadsubmit">Upload your json file!</button>
     </form>
+
+    <p> Το συνολικό σας score είναι: <?= $wholescore ?> <p>
+
+    <canvas id="chart" width="500" height="150"></canvas>
+    <script type="text/javascript">
+
+    new Chart(document.getElementById("chart"), {
+      type: 'line',
+      data: {
+        labels: <?= json_encode($monthlabels); ?>,
+        datasets: [{
+            data: <?= json_encode($chartdata); ?>,
+            borderColor: "#3e95cd",
+            fill: false
+          }
+        ]
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Μηνιαίο Score'
+        },
+        legend: {
+          display: false
+        }
+      }
+    });
+
+    </script>
+
 
     <form action="actions/logoutaction.php" method="POST">
       <button type="submit" name="logoutsubmit">Logout</button>
