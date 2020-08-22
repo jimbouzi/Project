@@ -49,6 +49,6 @@ if(!isset($_SESSION['sesusername'])){
     <script src="leaflet/leaflet.js"></script>
     <script src="heatmap/heatmap.js-master/build/heatmap.js"></script>
     <script src="heatmap/heatmap.js-master/plugins/leaflet-heatmap/leaflet-heatmap.js"></script>
-    <script src="leaflet/map.js"> </script>
+    <script src="map.js"> </script>
 </body>
 </html>
