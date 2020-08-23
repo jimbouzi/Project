@@ -9,6 +9,7 @@ $currmonth = date("m");
 $curryear = date("Y");
 $wholecount = $ecowholecount = 0;
 $userid = $_SESSION['sesuserId'];
+echo $userid;
 $sql = "SELECT timestampms, type FROM activity WHERE userid='$userid'";
 $res = mysqli_query($conn, $sql);
 //silogi dedomenon apo tin vasi
