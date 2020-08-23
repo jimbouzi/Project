@@ -1,7 +1,8 @@
 <?php
-
+session_start();
 $conn = mysqli_connect("localhost", "root", "", "ecoapp");
-$sql = "SELECT latitude, longtitude, accuracy FROM userdata limit 0,1000";
+$userid = $_SESSION['sesuserId'];
+$sql = "SELECT latitude, longtitude, accuracy FROM userdata WHERE userid='$userid'";
 
 $result = mysqli_query($conn, $sql);
 

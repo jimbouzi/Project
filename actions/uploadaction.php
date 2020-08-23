@@ -50,13 +50,17 @@ $insertvalues = implode(", ", $strlong1);
 $sql = "INSERT INTO userdata (userid, timestampms, latitude, longtitude, accuracy) VALUES $insertvalues";
 if (!mysqli_query($conn, $sql)){
 	echo "Error: " . $sql . "<br>" . mysqli_error($conn), "<br>";
+	header("Location: ../user.php?upload=error");
+	exit();
 }
 	$insertvalues = implode(", ", $strlong2);
 	$sql = "INSERT INTO activity (userid, timestampms, type, confidence) VALUES $insertvalues";
 	if (!mysqli_query($conn, $sql)){
 		echo "Error: " . $sql . "<br>" . mysqli_error($conn), "<br>";
+		header("Location: ../user.php?upload=fail");
+		exit();
 }
-header("Location: ../user.php?upload=succes");
+	header("Location: ../user.php?upload=success");
 }else{
 	header("Location: ../user.php");
 }

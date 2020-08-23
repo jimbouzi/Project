@@ -47,10 +47,13 @@ for($i=1; $i<=count($temparray); $i++){
     array_push($chartdata, 0);
   }
 }
-//shiftarisma pinaka wste o teleutaios minas na einai pio deksia kai na einai pio wraio
+//shiftarisma pinaka wste o teleutaios minas na einai pio deksia kai na einai pio wraio :)
 for($a=0; $a<12-date("m"); $a++){
   array_unshift($monthlabels, array_pop($monthlabels));
   array_unshift($chartdata, array_pop($chartdata));
 }
 //ypologismos sinolikou score
-$wholescore = round(($ecowholecount/$wholecount)*100);
+$wholescore = 0;
+if ($wholecount != 0){
+  $wholescore = round(($ecowholecount/$wholecount)*100);
+}
