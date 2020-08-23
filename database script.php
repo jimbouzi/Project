@@ -13,8 +13,8 @@ timestampms VARCHAR(14) NOT NULL,
 latitude INT NOT NULL,
 longtitude INT NOT NULL,
 accuracy INT NOT NULL,
-type VARCHAR,
-confidence INT,
+type VARCHAR(50),
+confidence INT(4),
 PRIMARY KEY (userid, timestampms)
 );
 
