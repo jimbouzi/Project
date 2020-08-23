@@ -13,12 +13,12 @@ timestampms VARCHAR(14) NOT NULL,
 latitude INT NOT NULL,
 longtitude INT NOT NULL,
 accuracy INT NOT NULL,
-type VARCHAR(50),
+type ENUM('ON_FOOT', 'WALKING', 'UNKNOWN', 'STILL', 'RUNNING', 'IN_VEHICLE', 'ON_BICYCLE', 'IN_ROAD_VEHICLE', 'IN_RAIL_VEHICLE', 'IN_TWO_WHEELER_VEHICLE', 'IN_FOUR_WHEELER_VEHICLE', 'TILTING'),
 confidence INT(4),
 year INT(10),
 month INT(4),
 day INT(3),
-hour INT(5)
+hour INT(5),
 PRIMARY KEY (userid, timestampms)
 );
 

@@ -33,20 +33,24 @@ foreach($jsondata as $property => $valueA){
         break;
       }
 		}
+		$xronos = date("Y", $timest/1000);
+		$minas = date("m", $timest/1000);
+		$mera = date("w", $timest/1000);
+		$wra = date("G", $timest/1000);
 		if(isset($type)){
-			$str1 = "('".$userid."', '".$timest."', ".$lat.", ".$long.", ".$acc.", '".$type."', ".$conf.")";
+			$str1 = "('".$userid."', '".$timest."', ".$lat.", ".$long.", ".$acc.", '".$type."', ".$conf.", ".$xronos.", ".$minas.", ".$mera.", ".$wra.")";
 		}
 		else{
-			$str1 = "('".$userid."', '".$timest."', ".$lat.", ".$long.", ".$acc.", NULL, NULL)";
+			$str1 = "('".$userid."', '".$timest."', ".$lat.", ".$long.", ".$acc.", NULL, NULL, ".$xronos.", ".$minas.", ".$mera.", ".$wra.")";
 		}
 		array_push($strlong1, $str1);
-  $timest = $lat = $long = $acc = $type = $conf = null;
+  $timest = $lat = $long = $acc = $type = $conf = $xronos = $minas = $mera = $wra = null;
  }
 }
 $insertvalues = implode(", ", $strlong1);
-$sql = "INSERT INTO userdata (userid, timestampms, latitude, longtitude, accuracy, type, confidence) VALUES $insertvalues";
+$sql = "INSERT INTO userdata (userid, timestampms, latitude, longtitude, accuracy, type, confidence, year, month, day, hour) VALUES $insertvalues";
 if (!mysqli_query($conn, $sql)){
-	echo "Error: " . $sql . "<br>" . mysqli_error($conn), "<br>";
+	//echo "Error: " . $sql . "<br>" . mysqli_error($conn), "<br>";
 	header("Location: ../user.php?upload=error");
 	exit();
 }
