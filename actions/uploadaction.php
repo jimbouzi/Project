@@ -3,9 +3,8 @@ if (isset($_POST['uploadsubmit'])){
 session_start();
 require 'dbfile.php';
 $userid = $_SESSION['sesuserId'];
-$timest = $lat = $long = $acc = $actimest = $type = $conf = null;
+$timest = $lat = $long = $acc = $type = $conf = null;
 $strlong1 = array();
-$strlong2 = array();
 
 require_once (__DIR__.'../../json-machine/vendor/autoload.php');
 
@@ -29,36 +28,27 @@ foreach($jsondata as $property => $valueA){
           $acc = $value;
           break;
         case "activity":
-            for($i = 0; $i<count($value); $i++){
-            $actimest = $value[$i]["timestampMs"];
-            $type = $value[$i]["activity"][0]["type"];
-            $conf = $value[$i]["activity"][0]["confidence"];
-            }
+            $type = $value[0]["activity"][0]["type"];
+            $conf = $value[0]["activity"][0]["confidence"];
         break;
       }
 		}
-		$str1 = "('".$userid."', '".$timest."', ".$lat.", ".$long.", ".$acc.")";
-		array_push($strlong1, $str1);
-		if (!$actimest == null){
-		$str2 = "('".$userid."', '".$actimest."', '".$type."', ".$conf.")";
-		array_push($strlong2, $str2);
+		if(isset($type)){
+			$str1 = "('".$userid."', '".$timest."', ".$lat.", ".$long.", ".$acc.", '".$type."', ".$conf.")";
 		}
-  $timest = $lat = $long = $acc = $actimest = $type = $conf = null;
+		else{
+			$str1 = "('".$userid."', '".$timest."', ".$lat.", ".$long.", ".$acc.", NULL, NULL)";
+		}
+		array_push($strlong1, $str1);
+  $timest = $lat = $long = $acc = $type = $conf = null;
  }
 }
 $insertvalues = implode(", ", $strlong1);
-$sql = "INSERT INTO userdata (userid, timestampms, latitude, longtitude, accuracy) VALUES $insertvalues";
+$sql = "INSERT INTO userdata (userid, timestampms, latitude, longtitude, accuracy, type, confidence) VALUES $insertvalues";
 if (!mysqli_query($conn, $sql)){
 	echo "Error: " . $sql . "<br>" . mysqli_error($conn), "<br>";
 	header("Location: ../user.php?upload=error");
 	exit();
-}
-	$insertvalues = implode(", ", $strlong2);
-	$sql = "INSERT INTO activity (userid, timestampms, type, confidence) VALUES $insertvalues";
-	if (!mysqli_query($conn, $sql)){
-		echo "Error: " . $sql . "<br>" . mysqli_error($conn), "<br>";
-		header("Location: ../user.php?upload=fail");
-		exit();
 }
 	header("Location: ../user.php?upload=success");
 }else{
