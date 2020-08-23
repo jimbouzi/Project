@@ -9,21 +9,13 @@ $currmonth = date("m");
 $curryear = date("Y");
 $wholecount = $ecowholecount = 0;
 $userid = $_SESSION['sesuserId'];
-$sql = "SELECT timestampms, type FROM activity WHERE userid='$userid'";
+$sql = "SELECT timestampms, type FROM userdata WHERE userid='$userid'";
 $res = mysqli_query($conn, $sql);
 //silogi dedomenon apo tin vasi
 while($row = mysqli_fetch_array($res)){
-  $month = date("m", $row['timestampms']/1000)-0;
-  if($curryear == date("Y", $row['timestampms']/1000)){
-    $wholecount++;
-    $temparray[$month][0]++;
-    if(in_array($row['type'], $ecoarray)){
-      $temparray[$month][1]++;
-      $ecowholecount++;
-    }
-  }
-  else if($curryear-1 == date("Y", $row['timestampms']/1000)){
-    if($currmonth < $month){
+  if(isset($row['type'])){
+    $month = date("m", $row['timestampms']/1000)-0;
+    if($curryear == date("Y", $row['timestampms']/1000)){
       $wholecount++;
       $temparray[$month][0]++;
       if(in_array($row['type'], $ecoarray)){
@@ -31,10 +23,20 @@ while($row = mysqli_fetch_array($res)){
         $ecowholecount++;
       }
     }
-  }else{
-    $wholecount++;
-    if(in_array($row['type'], $ecoarray)){
-      $ecowholecount++;
+    else if($curryear-1 == date("Y", $row['timestampms']/1000)){
+      if($currmonth < $month){
+        $wholecount++;
+        $temparray[$month][0]++;
+        if(in_array($row['type'], $ecoarray)){
+          $temparray[$month][1]++;
+          $ecowholecount++;
+        }
+      }
+    }else{
+      $wholecount++;
+      if(in_array($row['type'], $ecoarray)){
+        $ecowholecount++;
+      }
     }
   }
 }
@@ -56,4 +58,6 @@ for($a=0; $a<12-date("m"); $a++){
 $wholescore = 0;
 if ($wholecount != 0){
   $wholescore = round(($ecowholecount/$wholecount)*100);
+  $sql = "UPDATE users SET score='$wholescore' WHERE userid='$userid'";
+  $res = mysqli_query($conn, $sql);
 }

@@ -1,15 +1,21 @@
+yearDropDown = function(elementID){
+
 let startYear = 1950;
-let endYear = 2025;
+let endYear = new Date().getFullYear(); //prepei na pigainei mexri th simerini imerominia
 
 for(y = startYear; y <= endYear; y++) {
         var optn = document.createElement("OPTION");
         optn.text = y;
         optn.value = y;
         
-        // if year is 2015 selected
-        if (y == 2020) {
+        // apo pou arxizei
+        if (y == endYear) {
             optn.selected = true;
-        }
+        } 
         
-        document.getElementById('year').options.add(optn);
+        document.getElementById(elementID).options.add(optn);
 }
+}
+
+yearDropDown('yearFrom');
+yearDropDown('yearTo');
