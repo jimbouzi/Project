@@ -30,6 +30,7 @@ if(isset($_POST['loginsubmit'])){
           }
           else if($pwdCheck == true){
             if ($row['userID'] == 'admin'){
+              session_start();
               $_SESSION['sesuserId']= $row['userID'];
               $_SESSION['sesusername']= $row['userName'];
               header("Location: ../admin.php?login=success");

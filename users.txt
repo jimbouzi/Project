@@ -15,3 +15,13 @@ password: Boostpass6@
 name: boost
 surname: gkagiannis
 email: boost@hotmail.com
+
+
+ADMIN
+
+userid: admin
+username: admin
+password: theoulis1!
+name: anwteri
+surname: dinami
+email: sympan@paradise.sky

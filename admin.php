@@ -1,7 +1,7 @@
 <?php
-/*
+
 session_start();
-if(!isset($_SESSION['sesusername'])){
+/*if(!isset($_SESSION['sesusername'])){
   header("Location: ../index.php");
   exit();
 }
@@ -13,7 +13,8 @@ if(!isset($_SESSION['sesusername'])){
 <head>
   <meta charset="UTF-8">
   <title>Admin Page</title>
-  <h1 style="text-align:center">Welcome to the admin page, adminare!</h1>
+  <h1 style="text-align:center">Welcome to the admin page, Username: <?php echo $_SESSION['sesusername'] ?></h1>
+
   <link rel="stylesheet" href="css/w3css.css" />
   <link rel="stylesheet" href="leaflet/leaflet.css" />
   <style>
@@ -66,7 +67,9 @@ if(!isset($_SESSION['sesusername'])){
         }
       	?>
 
-    <form>
+      <br>
+
+    <form action=/actions/filteraction.php>
       <label for="yearFrom">Year from:</label>
       <select name="yearFrom" id="yearFrom">
       </select>
@@ -74,81 +77,81 @@ if(!isset($_SESSION['sesusername'])){
       <label for="yearTo">Year to:</label>
       <select name="yearTo" id="yearTo">
       </select>
-    </form>
-    <br>
 
-        <form>
-        <label for="monthFrom">Month from:</label>
-          <select name="MonthFrom" id="monthFrom">
-          <option value = 1>January </option>
-          <option value = 2>February </option>
-          <option value = 3>March </option>
-          <option value = 4>April </option>
-          <option value = 5>May </option>
-          <option value = 6>June </option>
-          <option value = 7>July </option>
-          <option value = 8>August </option>
-          <option value = 9>September </option>
-          <option value = 10>October </option>
-          <option value = 11>November </option>
-          <option value = 12>December </option>
-          </select>
+      <br>
 
-          <label for="monthTo">Month To:</label>
-          <select name="MonthTo" id="monthTo">
-          <option value = 1>January </option>
-          <option value = 2>February </option>
-          <option value = 3>March </option>
-          <option value = 4>April </option>
-          <option value = 5>May </option>
-          <option value = 6>June </option>
-          <option value = 7>July </option>
-          <option value = 8>August </option>
-          <option value = 9>September </option>
-          <option value = 10>October </option>
-          <option value = 11>November </option>
-          <option value = 12>December </option>
-          </select>
-        </form>
+      <label for="monthFrom">Month from:</label>
+      <select name="MonthFrom" id="monthFrom">
+        <option value=1>January </option>
+        <option value=2>February </option>
+        <option value=3>March </option>
+        <option value=4>April </option>
+        <option value=5>May </option>
+        <option value=6>June </option>
+        <option value=7>July </option>
+        <option value=8>August </option>
+        <option value=9>September </option>
+        <option value=10>October </option>
+        <option value=11>November </option>
+        <option value=12>December </option>
+      </select>
 
+      <label for="monthTo">Month To:</label>
+      <select name="MonthTo" id="monthTo">
+        <option value=1>January </option>
+        <option value=2>February </option>
+        <option value=3>March </option>
+        <option value=4>April </option>
+        <option value=5>May </option>
+        <option value=6>June </option>
+        <option value=7>July </option>
+        <option value=8>August </option>
+        <option value=9>September </option>
+        <option value=10>October </option>
+        <option value=11>November </option>
+        <option value=12>December </option>
+      </select>
 
-        <form>
-        <label for="dayFrom">Day From:</label>
-          <select name="dayFrom" id="dayFrom">
-          <option value = 0>Sunday </option>
-          <option value = 1>Monday </option>
-          <option value = 2>Tuesday </option>
-          <option value = 3>wednesday </option>
-          <option value = 4>Thursday </option>
-          <option value = 5>Friday </option>
-          <option value = 6>Saturday </option>
-          </select>
+      <br>
 
-          <label for="dayTo">Day To:</label>
-          <select name="dayTo" id="dayTo">
-          <option value = 0>Sunday </option>
-          <option value = 1>Monday </option>
-          <option value = 2>Tuesday </option>
-          <option value = 3>wednesday </option>
-          <option value = 4>Thursday </option>
-          <option value = 5>Friday </option>
-          <option value = 6>Saturday </option>
-          </select>
-        </form>
+      <label for="dayFrom">Day From:</label>
+      <select name="dayFrom" id="dayFrom">
+        <option value=0>Sunday </option>
+        <option value=1>Monday </option>
+        <option value=2>Tuesday </option>
+        <option value=3>wednesday </option>
+        <option value=4>Thursday </option>
+        <option value=5>Friday </option>
+        <option value=6>Saturday </option>
+      </select>
 
-        <form> 
-        <label for="hourFrom">Hour from:</label>
-          <select name="hourfrom" id="hourFrom">
-          <option value = 0>0 </option>
-          <option value = 1>1 </option>          
-          </select>
-        </from>
+      <label for="dayTo">Day To:</label>
+      <select name="dayTo" id="dayTo">
+        <option value=0>Sunday </option>
+        <option value=1>Monday </option>
+        <option value=2>Tuesday </option>
+        <option value=3>wednesday </option>
+        <option value=4>Thursday </option>
+        <option value=5>Friday </option>
+        <option value=6>Saturday </option>
+      </select>
 
-        <br>
+      <br>
 
-        
+      <label for="hourFrom">Hour from:</label>
+      <select name="hourfrom" id="hourFrom">
+        <option value=0>0 </option>
+        <option value=1>1 </option>
+      </select>
 
-    <form action="/action_page.php">
+      <label for="hourTo">Hour To:</label>
+      <select name="hourTo" id="hourTo">
+        <option value=0>0 </option>
+        <option value=1>1 </option>
+      </select>
+
+      <br>
+
       <label for="movement">Type of movement:</label>
       <select name="movement" id="movement">
         <option value="Walk">Walk</option>
@@ -156,30 +159,32 @@ if(!isset($_SESSION['sesusername'])){
         <option value="Bike">Bike</option>
         <option value="Car">Car</option>
       </select>
+
+      <input type = 'submit' value = 'choose filters'>
+
     </form>
-  </form>
 
-  <script src="leaflet/leaflet.js"></script>
-  <script src="heatmap/heatmap.js-master/build/heatmap.js"></script>
-  <script src="heatmap/heatmap.js-master/plugins/leaflet-heatmap/leaflet-heatmap.js"></script>
-  <script src="leaflet/map.js"> </script>
-  <script src="javascript/yearDropDown.js"></script>
-  <form action="actions/uploadaction.php" method="POST" enctype="multipart/form-data">
-    <input type="file" name="jsonfile" id="myFile">
-    <button type="submit" name="uploadsubmit">Upload your json file!</button>
-  </form>
+    <script src="leaflet/leaflet.js"></script>
+    <script src="heatmap/heatmap.js-master/build/heatmap.js"></script>
+    <script src="heatmap/heatmap.js-master/plugins/leaflet-heatmap/leaflet-heatmap.js"></script>
+    <script src="leaflet/map.js"> </script>
+    <script src="javascript/yearDropDown.js"></script>
+    <form action="actions/uploadaction.php" method="POST" enctype="multipart/form-data">
+      <input type="file" name="jsonfile" id="myFile">
+      <button type="submit" name="uploadsubmit">Upload your json file!</button>
+    </form>
 
-  <div class="container" style="width:900px;">
-    <br /><br />
-    <div id="chart"></div>
-  </div>
+    <div class="container" style="width:900px;">
+      <br /><br />
+      <div id="chart"></div>
+    </div>
 
-  <form action="actions/logoutaction.php" method="POST">
-    <button type="submit" name="logoutsubmit">Logout</button>
-  </form>
-  <form action="actions/chartaction.php" method="POST">
-    <button type="submit" name="chartbutton">Chart!</button>
-  </form>
+    <form action="actions/logoutaction.php" method="POST">
+      <button type="submit" name="logoutsubmit">Logout</button>
+    </form>
+    <form action="actions/chartaction.php" method="POST">
+      <button type="submit" name="chartbutton">Chart!</button>
+    </form>
 </body>
 
 </html>

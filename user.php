@@ -11,6 +11,7 @@ require 'actions/chartaction.php';
     <meta charset="UTF-8">
     <title>User Page</title>
     <h1 style="text-align:center">Welcome to the user page, <?php echo $_SESSION['sesusername'] ?>!</h1>
+    <br>
     <link rel="stylesheet" href="css/w3css.css"/>
     <link rel="stylesheet" href="leaflet/leaflet.css"/>
         <style>
@@ -22,7 +23,7 @@ require 'actions/chartaction.php';
 <body>
     <div id="mapid"></div>
 
-      <form  name="Filter" method="POST">
+    <form  name="Filter" method="POST">
       From:
       <input type="date" name="dateFrom"/>
       <br/>
