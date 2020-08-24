@@ -18,6 +18,12 @@ require 'actions/chartaction.php';
               #mapid {height: 50%;
                       width: 50%;
                       margin: "auto"}
+                      table, th, td {
+                      border: 1px solid black;
+                      border-collapse: collapse;
+                      padding: 5px;
+                      text-align: center;
+                      }
         </style>
 </head>
 <body>
@@ -43,6 +49,17 @@ require 'actions/chartaction.php';
     </form>
 
     <p> Το συνολικό σας score είναι: <?= $wholescore ?> <p>
+
+    <div class="tables">
+    <h3>Κορυφαίοι Χρήστες</h3>
+    <table style = "width:40%">
+      <tr>
+        <th>Όνομα</th>
+        <th>Score</th>
+      </tr>
+      <?php require 'actions/leaderaction.php'; ?>
+      </table>
+    </div>
 
     <canvas id="chart" width="500" height="150"></canvas>
     <script type="text/javascript">

@@ -19,6 +19,9 @@
                 if($_GET['error'] == "loginerror"){
                   echo '<p class="loginerror">Username or passowrd are incorrect.</p>';
                 }
+                else if($_GET['error'] == "no_user"){
+                  echo '<p class="loginerror">There is no user with this username.</p>';
+                }
               }
              ?>
               <div class="separation">
