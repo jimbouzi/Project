@@ -69,7 +69,7 @@ session_start();
 
       <br>
 
-    <form action=/actions/filteraction.php>
+    <form method="get" action="data.php">
       <label for="yearFrom">Year from:</label>
       <select name="yearFrom" id="yearFrom">
       </select>
@@ -81,7 +81,7 @@ session_start();
       <br>
 
       <label for="monthFrom">Month from:</label>
-      <select name="MonthFrom" id="monthFrom">
+      <select name="monthFrom" id="monthFrom">
         <option value=1>January </option>
         <option value=2>February </option>
         <option value=3>March </option>
@@ -160,7 +160,7 @@ session_start();
         <option value="Car">Car</option>
       </select>
 
-      <input type = 'submit' value = 'choose filters'>
+      <input type='submit' value='Choose Filters'>
 
     </form>
 

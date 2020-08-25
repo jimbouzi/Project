@@ -6,20 +6,29 @@ $userid = $_SESSION['sesuserId'];
 
 
 if ($userid == 'admin'){
-      $sql = "SELECT latitude, longtitude, accuracy FROM userdata";
+    //$startMonth = $_GET['monthFrom'];
+    $sql = "SELECT latitude, longtitude, accuracy FROM userdata ";
+    $sql2 = "WHERE ";
+    $sql3 = "month = 1";
+
+    $sqlFinal = $sql . $sql2 . $sql3;      
 }else{
-   $sql = "SELECT latitude, longtitude, accuracy FROM userdata WHERE userid='$userid'";
+    $sql = "SELECT latitude, longtitude, accuracy FROM userdata WHERE userid='$userid'";
 }
 
-$result = mysqli_query($conn, $sql);
+function getDataFromDB($connection, $sqlQuery){
 
-$testData = array();
+    $result = mysqli_query($connection, $sqlQuery);
+    $mapData = array();
 
-while ($row = mysqli_fetch_assoc($result))
-{
-    $row['latitude'] = $row['latitude']/10000000;
-    $row['longtitude'] = $row['longtitude']/10000000;
-    $testData[] = $row;
+    while ($row = mysqli_fetch_assoc($result)){
+
+        $row['latitude'] = $row['latitude']/10000000;
+        $row['longtitude'] = $row['longtitude']/10000000;
+        $mapData[] = $row;
+        }
+
+    echo json_encode($mapData);
 }
 
-echo json_encode($testData);
+getDataFromDB($conn, $sqlFinal);
