@@ -63,6 +63,7 @@ require 'actions/chartaction.php';
     <p> Το συνολικό σας score είναι: <?= $wholescore ?> <p>
     <p> Η περίοδος που καλύπτουν οι εγγραφές σας είναι από <?= $mintimestamp ?> μέχρι <?= $maxtimestamp ?>. </p>
     <!-- To parapanw prepei na einai meta to leaderboard gia na exei ginei to require 'actions/leaderboard' kai na blepei tis metavlites-->
+    <p> Το τελευταίο σας upload έγινε στις <?= $lastupload ?>.</p>
     <canvas id="chart" width="500" height="150"></canvas>
     <script type="text/javascript">
 

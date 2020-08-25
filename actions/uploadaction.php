@@ -54,6 +54,9 @@ if (!mysqli_query($conn, $sql)){
 	header("Location: ../user.php?upload=error");
 	exit();
 }
+$lastupload = date("d/m/Y");
+$sql = "UPDATE users SET lastupload='$lastupload' WHERE userid='$userid'";
+mysqli_query($conn, $sql);
 	header("Location: ../user.php?upload=success");
 }else{
 	header("Location: ../user.php");

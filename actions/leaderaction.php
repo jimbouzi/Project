@@ -1,6 +1,9 @@
 <?php
 $i = 0;
 $flag = 0;
+$mintimestamp = "<i> δεν υπάρχουν εγγραφές </i>";
+$maxtimestamp = "<i> δεν υπάρχουν εγγραφές </i>";
+$lastupload = "<i> δεν υπάρχουν εγγραφές </i>";
 $sql = "SELECT userid, name, surname, score FROM users ORDER BY score DESC";
 $res = mysqli_query($conn, $sql);
 for($z=1; $z<4; $z++){
@@ -31,9 +34,18 @@ if($flag == 0){
 $sql = "SELECT MIN(timestampms) FROM userdata WHERE userid='$userid'";
 $res = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($res);
-$mintimestamp = date("d/m/Y", $row['MIN(timestampms)']/1000);
+if($row['MIN(timestampms)'] > 0)
+  $mintimestamp = date("d/m/Y", $row['MIN(timestampms)']/1000);
+
 
 $sql = "SELECT MAX(timestampms) FROM userdata WHERE userid='$userid'";
 $res = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($res);
-$maxtimestamp = date("d/m/Y", $row['MAX(timestampms)']/1000);
+if($row['MAX(timestampms)'] > 0)
+  $maxtimestamp = date("d/m/Y", $row['MAX(timestampms)']/1000);
+
+$sql = "SELECT lastupload FROM users WHERE userid='$userid'";
+$res = mysqli_query($conn, $sql);
+$row = mysqli_fetch_array($res);
+if(!is_null($row['lastupload']))
+  $lastupload = $row['lastupload'];
