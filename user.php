@@ -48,7 +48,6 @@ require 'actions/chartaction.php';
         <button type="submit" name="uploadsubmit">Upload your json file!</button>
     </form>
 
-    <p> Το συνολικό σας score είναι: <?= $wholescore ?> <p>
 
     <div class="tables">
     <h3>Κορυφαίοι Χρήστες</h3>
@@ -61,6 +60,9 @@ require 'actions/chartaction.php';
       </table>
     </div>
 
+    <p> Το συνολικό σας score είναι: <?= $wholescore ?> <p>
+    <p> Η περίοδος που καλύπτουν οι εγγραφές σας είναι από <?= $mintimestamp ?> μέχρι <?= $maxtimestamp ?>. </p>
+    <!-- To parapanw prepei na einai meta to leaderboard gia na exei ginei to require 'actions/leaderboard' kai na blepei tis metavlites-->
     <canvas id="chart" width="500" height="150"></canvas>
     <script type="text/javascript">
 
