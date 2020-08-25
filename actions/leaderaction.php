@@ -28,3 +28,12 @@ if($flag == 0){
     $z++;
   }
 }
+$sql = "SELECT MIN(timestampms) FROM userdata WHERE userid='$userid'";
+$res = mysqli_query($conn, $sql);
+$row = mysqli_fetch_array($res);
+$mintimestamp = date("d/m/Y", $row['MIN(timestampms)']/1000);
+
+$sql = "SELECT MAX(timestampms) FROM userdata WHERE userid='$userid'";
+$res = mysqli_query($conn, $sql);
+$row = mysqli_fetch_array($res);
+$maxtimestamp = date("d/m/Y", $row['MAX(timestampms)']/1000);
