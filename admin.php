@@ -13,7 +13,7 @@ session_start();
 <head>
   <meta charset="UTF-8">
   <title>Admin Page</title>
-  <h1 style="text-align:center">Welcome to the admin page, Username: <?php echo $_SESSION['sesusername'] ?></h1>
+  <h1 style="text-align:center">Welcome to the admin page</h1>
 
   <link rel="stylesheet" href="css/w3css.css" />
   <link rel="stylesheet" href="leaflet/leaflet.css" />
@@ -49,7 +49,7 @@ session_start();
       	echo $from_date;
 
         echo "<br>";
-        
+
       	$to_date= strtotime($_POST['dateTo']);
       	echo $to_date;
 

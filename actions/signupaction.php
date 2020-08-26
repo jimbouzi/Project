@@ -93,22 +93,22 @@ function validatePassword($pass){
   global $mail;
 
     if(strlen($pass) < 8){
-      echo "Clave demasiado pequeña.";
+      echo "Password must contain atleast 8 characters.";
       header("Location: ../index.php?error=tooshort&userName=".$usern."&name=".$nam."&surname=".$surnam."&email=".$mail);
       return false;
     }
     else if(!preg_match('/[1-9]/',$pass)){
-      echo "No contiene ningún número";
+      echo "Password must contain atleast one number.";
       header("Location: ../index.php?error=noNumbers&userName=".$usern."&name=".$nam."&surname=".$surnam."&email=".$mail);
       return false;
     }
     else if(!preg_match('/[A-Z]/',$pass)){
-      echo "No tiene mayúsculas";
+      echo "Password must contain atleast one capital letter.";
       header("Location: ../index.php?error=noCapitals&userName=".$usern."&name=".$nam."&surname=".$surnam."&email=".$mail);
       return false;
     }
     else if(!preg_match('/[@&*$#]/',$pass)){
-      echo "No contiene caracteres especiales";
+      echo "Password must contain atleast one special character";
       header("Location: ../index.php?error=noSpecials&userName=".$usern."&name=".$nam."&surname=".$surnam."&email=".$mail);
       return false;
     }
