@@ -1,13 +1,11 @@
-function renderMap(){
     let mymap = L.map('mapid')
     let osmUrl='https://tile.openstreetmap.org/{z}/{x}/{y}.png';
     let osmAttrib='Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'; //for copyrights, bottom right
     let osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
     mymap.addLayer(osm);
     mymap.setView([38.246242, 21.7350847], 16);
-}
-renderMap();
-//function placeMarker(){
+
+
     //adds draggable marker to map
     let marker = L.marker ([38.246242, 21.7350847], {draggable: 'true'});
     marker.addTo(mymap);

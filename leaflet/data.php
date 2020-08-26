@@ -8,8 +8,8 @@ $userid = $_SESSION['sesuserId'];
 if ($userid == 'admin'){
     //$startMonth = $_GET['monthFrom'];
     $sql = "SELECT latitude, longtitude, accuracy FROM userdata ";
-    $sql2 = "WHERE ";
-    $sql3 = "month = 1";
+    //$sql2 = "WHERE ";
+    //$sql3 = "month = 1";
 
     $sqlFinal = $sql . $sql2 . $sql3;      
 }else{
@@ -31,4 +31,4 @@ function getDataFromDB($connection, $sqlQuery){
     echo json_encode($mapData);
 }
 
-getDataFromDB($conn, $sqlFinal);
+getDataFromDB($conn, $sql); //anti gia $sql, 8a valoume $sqlFinal
