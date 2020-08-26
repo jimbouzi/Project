@@ -59,5 +59,5 @@ $wholescore = 0;
 if ($wholecount != 0){
   $wholescore = round(($ecowholecount/$wholecount)*100);
   $sql = "UPDATE users SET score='$wholescore' WHERE userid='$userid'";
-  $res = mysqli_query($conn, $sql);
+  mysqli_query($conn, $sql);
 }

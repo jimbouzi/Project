@@ -5,7 +5,8 @@ name VARCHAR(50) NOT NULL,
 surname VARCHAR(50) NOT NULL,
 email TINYTEXT NOT NULL,
 pass LONGTEXT NOT NULL,
-score INT
+score INT,
+lastupload VARCHAR(15)
 );
 
 CREATE TABLE IF NOT EXISTS userdata(
