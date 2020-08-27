@@ -28,16 +28,54 @@ require 'actions/chartaction.php';
 </head>
 <body>
     <div id="mapid"></div>
+    <div class="Filters">
+      <form  name="Filter">
+        <label for="yearFrom">Year from:</label>
+        <select name="yearFrom" id="yearFrom">
+        </select>
 
-    <form  name="Filter" method="POST">
-      From:
-      <input type="date" name="dateFrom"/>
-      <br/>
-      To:
-      <input type="date" name="dateTo"/>
-      <input type="submit" name="submit" value="Dates"/>
+        <label for="yearTo">Year to:</label>
+        <select name="yearTo" id="yearTo">
+        </select>
 
-  </form>
+        <br>
+
+        <label for="monthFrom">Month from:</label>
+        <select name="monthFrom" id="monthFrom">
+          <option value=1>January </option>
+          <option value=2>February </option>
+          <option value=3>March </option>
+          <option value=4>April </option>
+          <option value=5>May </option>
+          <option value=6>June </option>
+          <option value=7>July </option>
+          <option value=8>August </option>
+          <option value=9>September </option>
+          <option value=10>October </option>
+          <option value=11>November </option>
+          <option value=12>December </option>
+        </select>
+
+        <label for="monthTo">Month To:</label>
+        <select name="monthTo" id="monthTo">
+          <option value=1>January </option>
+          <option value=2>February </option>
+          <option value=3>March </option>
+          <option value=4>April </option>
+          <option value=5>May </option>
+          <option value=6>June </option>
+          <option value=7>July </option>
+          <option value=8>August </option>
+          <option value=9>September </option>
+          <option value=10>October </option>
+          <option value=11>November </option>
+          <option value=12>December </option>
+        </select>
+
+        <input type='button' onclick = "ajaxCall()" value='Choose Filters'>
+      </form>
+    </div>
+    <script src="javascript/yearDropDown.js"></script>
     <script src="leaflet/leaflet.js"></script>
     <script src="heatmap/heatmap.js-master/build/heatmap.js"></script>
     <script src="heatmap/heatmap.js-master/plugins/leaflet-heatmap/leaflet-heatmap.js"></script>
@@ -90,7 +128,6 @@ require 'actions/chartaction.php';
     });
 
     </script>
-
 
     <form action="actions/logoutaction.php" method="POST">
       <button type="submit" name="logoutsubmit">Logout</button>

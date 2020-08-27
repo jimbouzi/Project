@@ -19,17 +19,17 @@ if(isset($_POST['loginsubmit'])){
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         if ($row = mysqli_fetch_assoc($result)) {
-          if ($row['userName'] == 'admin' && $row['pass'] == $password){
+        /*  if ($row['userName'] == 'admin' && $row['pass'] == $password){
             header("Location: ../admin.php?login=success");
             exit();
-          }
+          }*/
           $pwdCheck = password_verify($password, $row['pass']);
           if($pwdCheck == false){
             header("Location: ../index.php?error=loginerror");
             exit();
           }
           else if($pwdCheck == true){
-            if ($row['userName'] == 'admin'){
+            if ($row['userID'] == 'admin'){
               session_start();
               $_SESSION['sesuserId']= $row['userID'];
               $_SESSION['sesusername']= $row['userName'];

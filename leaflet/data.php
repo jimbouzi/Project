@@ -9,11 +9,15 @@ if ($userid == 'admin'){
     $startMonth = $_POST['monthStart'];
     $sql = "SELECT latitude, longtitude, accuracy FROM userdata ";
     $sql2 = "WHERE ";
-    $sql3 = "month = ";
+    $sql3 = "month >= ";
 
-    $sqlFinal = $sql . $sql2 . $sql3 . $startMonth;      
+    $sqlFinal = $sql . $sql2 . $sql3 . $startMonth;
 }else{
-    $sql = "SELECT latitude, longtitude, accuracy FROM userdata WHERE userid='$userid'";
+    $yearfrom = $_POST['yearStart'];
+    $yearto = $_POST['yearEnd'];
+    $monthfrom = $_POST['monthStart'];
+    $monthto = $_POST['monthEnd'];
+    $sqlFinal = "SELECT latitude, longtitude, accuracy FROM userdata WHERE userid='$userid' AND month >= $monthfrom AND month <= '$monthto' AND year>='$yearfrom' AND year<='$yearto'";
 }
 
 function getDataFromDB($connection, $sqlQuery){

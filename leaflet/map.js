@@ -32,7 +32,11 @@ function ajaxCall(){
     console.log("this is from the click");
 
     var monthStart = document.getElementById("monthFrom").value;
-    console.log("Month From is: " + monthStart);
+    var monthEnd = document.getElementById("monthTo").value;
+    var yearStart = document.getElementById("yearFrom").value;
+    var yearEnd = document.getElementById("yearTo").value;
+    //console.log("Month From is: " + monthStart);
+    //console.log("Month To is: " + monthEnd);
 
     var ajax = new XMLHttpRequest();
     var method = "POST";
@@ -45,7 +49,7 @@ function ajaxCall(){
     // sending ajax request
     //xreiazotan header, kai allh syntaksi sto send
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    ajax.send('monthStart=' + monthStart);
+    ajax.send('monthStart=' + monthStart + '&monthEnd=' + monthEnd + '&yearStart=' + yearStart +'&yearEnd=' + yearEnd);
 
     // receiving response from url
     ajax.onreadystatechange = function()
@@ -53,7 +57,7 @@ function ajaxCall(){
 
         if (this.readyState == 4 && this.status == 200)
         {
-            
+
             let json_data = JSON.parse(this.responseText);
 
             console.log(json_data); //for debugging
@@ -65,7 +69,7 @@ function ajaxCall(){
             console.log(vdata); //for debugging
 
             heatmapLayer.setData(vdata);
-            mymap.addLayer(heatmapLayer);            
+            mymap.addLayer(heatmapLayer);
         }
     }
 };
