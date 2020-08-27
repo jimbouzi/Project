@@ -18,6 +18,16 @@ function markerClick(event) {
     this.getPopup().setLatLng(event.latlng).setContent("Coordinates: " + event.latlng.toString());
 }
 
+let cfg = { "radius": 40,
+            "maxOpacity": 0.8,
+            "scaleRadius": false,
+            "useLocalExtrema": false,
+            latField: 'latitude',
+            lngField: 'longtitude',
+            valueField: 'accuracy'};
+
+let heatmapLayer = new HeatmapOverlay(cfg);
+
 function ajaxCall(){
     console.log("this is from the click");
 
@@ -43,6 +53,7 @@ function ajaxCall(){
 
         if (this.readyState == 4 && this.status == 200)
         {
+            
             let json_data = JSON.parse(this.responseText);
 
             console.log(json_data); //for debugging
@@ -53,18 +64,10 @@ function ajaxCall(){
 
             console.log(vdata); //for debugging
 
-            let cfg = { "radius": 40,
-                       "maxOpacity": 0.8,
-                       "scaleRadius": false,
-                       "useLocalExtrema": false,
-                       latField: 'latitude',
-                       lngField: 'longtitude',
-                       valueField: 'accuracy'};
-
-            let heatmapLayer = new HeatmapOverlay(cfg);
             heatmapLayer.setData(vdata);
-            mymap.addLayer(heatmapLayer);
-
+            mymap.addLayer(heatmapLayer);            
         }
     }
 };
+
+//!!! Pros to paron douleyei mono gia to monthFrom !!!
