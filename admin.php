@@ -13,7 +13,8 @@ session_start();
 <head>
   <meta charset="UTF-8">
   <title>Admin Page</title>
-  <h1 style="text-align:center">Welcome to the admin page</h1>
+  <!--To echo Username einai gia na vlepoume an exoume energo session --> 
+  <h1 style="text-align:center">Welcome to the admin page, Username: <?php echo $_SESSION['sesusername'] ?></h1>
 
   <link rel="stylesheet" href="css/w3css.css" />
   <link rel="stylesheet" href="leaflet/leaflet.css" />
@@ -69,7 +70,7 @@ session_start();
 
       <br>
 
-    <form method="get" action="data.php">
+    <form>
       <label for="yearFrom">Year from:</label>
       <select name="yearFrom" id="yearFrom">
       </select>
@@ -160,7 +161,7 @@ session_start();
         <option value="Car">Car</option>
       </select>
 
-      <input type='submit' value='Choose Filters'>
+      <input type='button' onclick = "ajaxCall()" value='Choose Filters'>
 
     </form>
 
