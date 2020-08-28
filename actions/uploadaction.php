@@ -33,19 +33,21 @@ foreach($jsondata as $property => $valueA){
         break;
       }
 		}
-		$xronos = date("Y", $timest/1000);
-		$minas = date("m", $timest/1000);
-		$mera = date("w", $timest/1000);
-		$wra = date("G", $timest/1000);
-		if(isset($type)){
-			$str1 = "('".$userid."', '".$timest."', ".$lat.", ".$long.", ".$acc.", '".$type."', ".$conf.", ".$xronos.", ".$minas.", ".$mera.", ".$wra.")";
+		if(validDistance($lat/10000000, $long/10000000)){
+			$xronos = date("Y", $timest/1000);
+			$minas = date("m", $timest/1000);
+			$mera = date("w", $timest/1000);
+			$wra = date("G", $timest/1000);
+			if(isset($type)){
+				$str1 = "('".$userid."', '".$timest."', ".$lat.", ".$long.", ".$acc.", '".$type."', ".$conf.", ".$xronos.", ".$minas.", ".$mera.", ".$wra.")";
+			}
+			else{
+				$str1 = "('".$userid."', '".$timest."', ".$lat.", ".$long.", ".$acc.", NULL, NULL, ".$xronos.", ".$minas.", ".$mera.", ".$wra.")";
+			}
+			array_push($strlong1, $str1);
+	    $timest = $lat = $long = $acc = $type = $conf = $xronos = $minas = $mera = $wra = null;
 		}
-		else{
-			$str1 = "('".$userid."', '".$timest."', ".$lat.", ".$long.", ".$acc.", NULL, NULL, ".$xronos.", ".$minas.", ".$mera.", ".$wra.")";
-		}
-		array_push($strlong1, $str1);
-  $timest = $lat = $long = $acc = $type = $conf = $xronos = $minas = $mera = $wra = null;
- }
+ 	}
 }
 $insertvalues = implode(", ", $strlong1);
 $sql = "INSERT INTO userdata (userid, timestampms, latitude, longtitude, accuracy, type, confidence, year, month, day, hour) VALUES $insertvalues";
@@ -60,4 +62,22 @@ mysqli_query($conn, $sql);
 	header("Location: ../user.php?upload=success");
 }else{
 	header("Location: ../user.php");
+}
+
+function validDistance($distlat, $distlong) {
+    $earth_radius = 6371;
+		$latitude2 = 38.230462;
+		$longtitude2 = 21.753150;
+
+    $dLat = deg2rad($latitude2 - $distlat);
+    $dLon = deg2rad($longtitude2 - $distlong);
+
+    $a = sin($dLat/2) * sin($dLat/2) + cos(deg2rad($distlat)) * cos(deg2rad($latitude2)) * sin($dLon/2) * sin($dLon/2);
+    $c = 2 * asin(sqrt($a));
+    $d = $earth_radius * $c;
+
+    if($d > 10)
+			return false;
+		else
+			return true;
 }
