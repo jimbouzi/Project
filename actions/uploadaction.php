@@ -19,10 +19,10 @@ foreach($jsondata as $property => $valueA){
           $timest = $value;
           break;
         case "latitudeE7":
-          $lat = $value/10000000;
+          $lat = $value;
           break;
         case "longitudeE7":
-          $long = $value/10000000;
+          $long = $value;
           break;
         case "accuracy":
           $acc = $value;
@@ -33,7 +33,7 @@ foreach($jsondata as $property => $valueA){
         break;
       }
 		}
-		if(validDistance($lat, $long)){
+		if(validDistance($lat/10000000, $long/10000000)){
 			$xronos = date("Y", $timest/1000);
 			$minas = date("m", $timest/1000);
 			$mera = date("w", $timest/1000);
