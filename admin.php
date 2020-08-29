@@ -79,6 +79,8 @@ session_start();
       <select name="yearTo" id="yearTo">
       </select>
 
+      <input type='button' name='allYears' onclick='getLastDropdownElement("yearTo"), getFirstDropdownElement("yearFrom")' value='All Years'></input>
+
       <br>
 
       <label for="monthFrom">Month from:</label>
@@ -113,6 +115,8 @@ session_start();
         <option value=12>December </option>
       </select>
 
+      <input type='button' name='allMonths' onclick='getLastDropdownElement("monthTo"), getFirstDropdownElement("monthFrom")' value='All Months'></input>
+
       <br>
 
       <label for="dayFrom">Day From:</label>
@@ -131,12 +135,13 @@ session_start();
         <option value=0>Sunday </option>
         <option value=1>Monday </option>
         <option value=2>Tuesday </option>
-        <option value=3>wednesday </option>
+        <option value=3>Wednesday </option>
         <option value=4>Thursday </option>
         <option value=5>Friday </option>
         <option value=6>Saturday </option>
       </select>
 
+      <input type='button' name='allDays' onclick='getLastDropdownElement("dayTo"), getFirstDropdownElement("dayFrom")' value='All Days'></input>
       <br>
 
       <label for="hourFrom">Hour from:</label>
@@ -151,6 +156,8 @@ session_start();
         <option value=1>1 </option>
       </select>
 
+      <input type='button' name='allHours' onclick='getLastDropdownElement("hourTo"), getFirstDropdownElement("hourFrom")' value='All Hours'></input>
+
       <br>
 
       <label for="movement">Type of movement:</label>
@@ -160,6 +167,10 @@ session_start();
         <option value="Bike">Bike</option>
         <option value="Car">Car</option>
       </select>
+
+      <input type='button' name='allTypes' value='All Types'></input>
+
+      <br>
 
       <input type='button' onclick = "ajaxCall()" value='Choose Filters'>
 

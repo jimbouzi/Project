@@ -3,14 +3,14 @@ session_start();
 require '../actions/dbfile.php';
 $userid = $_SESSION['sesuserId'];
 
-$yearfrom = $_POST['yearStart'];
-$yearto = $_POST['yearEnd'];
-$monthfrom = $_POST['monthStart'];
-$monthto = $_POST['monthEnd'];
+$yearFrom = $_POST['yearStart'];
+$yearTo = $_POST['yearEnd'];
+$monthFrom = $_POST['monthStart'];
+$monthTo = $_POST['monthEnd'];
 
 $sql = "SELECT latitude, longtitude, accuracy FROM userdata WHERE
-            month >= $monthfrom AND month <= $monthto AND
-            year>=$yearfrom AND year<=$yearto";
+        month >= $monthFrom AND month <= $monthTo AND
+        year>=$yearFrom AND year<=$yearTo";
 $sqlUserExtra = " AND userid='$userid'";
 
 if($userid != 'admin'){
