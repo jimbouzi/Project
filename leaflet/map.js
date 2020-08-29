@@ -60,11 +60,11 @@ function ajaxCall(){
 
             let json_data = JSON.parse(this.responseText);
 
-            console.log(json_data); //for debugging
+            console.log(json_data.locations); //for debugging
 
             vdata = {
                 max: 100,
-                data: json_data};
+                data: json_data.locations};
 
             console.log(vdata); //for debugging
 

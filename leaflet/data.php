@@ -32,7 +32,9 @@ function getDataFromDB($connection, $sqlQuery){
         $mapData[] = $row;
         }
 
-    echo json_encode($mapData);
+        echo '{"locations" : ';
+        echo json_encode($mapData);
+        echo '}';
 }
 
 getDataFromDB($conn, $sqlFinal); //anti gia $sql, 8a valoume $sqlFinal

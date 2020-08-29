@@ -72,7 +72,7 @@ require 'actions/chartaction.php';
           <option value=12>December </option>
         </select>
 
-        <input type='button' onclick = "ajaxCall()" value='Choose Filters'>
+        <input type='button' onclick = "ajaxCall()" value='Apply Filters'>
       </form>
     </div>
     <script src="javascript/yearDropDown.js"></script>
