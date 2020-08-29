@@ -1,23 +1,21 @@
 <?php
 session_start();
 $conn = mysqli_connect("localhost", "root", "", "ecoapp");
-//require 'dbfile.php';
+//require 'actions/dbfile.php';
 $userid = $_SESSION['sesuserId'];
 
+$yearfrom = $_POST['yearStart'];
+$yearto = $_POST['yearEnd'];
+$monthfrom = $_POST['monthStart'];
+$monthto = $_POST['monthEnd'];
 
-if ($userid == 'admin'){
-    $startMonth = $_POST['monthStart'];
-    $sql = "SELECT latitude, longtitude, accuracy FROM userdata ";
-    $sql2 = "WHERE ";
-    $sql3 = "month >= ";
+$sql = "SELECT latitude, longtitude, accuracy, type FROM userdata WHERE  
+            month >= $monthfrom AND month <= $monthto AND 
+            year>=$yearfrom AND year<=$yearto";
+$sqlUserExtra = " AND userid=$userid";
 
-    $sqlFinal = $sql . $sql2 . $sql3 . $startMonth;
-}else{
-    $yearfrom = $_POST['yearStart'];
-    $yearto = $_POST['yearEnd'];
-    $monthfrom = $_POST['monthStart'];
-    $monthto = $_POST['monthEnd'];
-    $sqlFinal = "SELECT latitude, longtitude, accuracy FROM userdata WHERE userid='$userid' AND month >= $monthfrom AND month <= '$monthto' AND year>='$yearfrom' AND year<='$yearto'";
+if($userid != 'admin'){
+    $sql = $sql . $sqlUserExtra;
 }
 
 function getDataFromDB($connection, $sqlQuery){
@@ -27,8 +25,8 @@ function getDataFromDB($connection, $sqlQuery){
 
     while ($row = mysqli_fetch_assoc($result)){
 
-        $row['latitude'] = $row['latitude']/10000000;
-        $row['longtitude'] = $row['longtitude']/10000000;
+        $row['latitude'] = $row['latitude'];
+        $row['longtitude'] = $row['longtitude'];
         $mapData[] = $row;
         }
 
@@ -37,4 +35,4 @@ function getDataFromDB($connection, $sqlQuery){
         echo '}';
 }
 
-getDataFromDB($conn, $sqlFinal); //anti gia $sql, 8a valoume $sqlFinal
+getDataFromDB($conn, $sql);
