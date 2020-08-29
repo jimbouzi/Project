@@ -12,9 +12,9 @@ lastupload VARCHAR(15)
 CREATE TABLE IF NOT EXISTS userdata(
 userid VARCHAR(255) NOT NULL REFERENCES users(userID),
 timestampms VARCHAR(14) NOT NULL,
-latitude INT NOT NULL,
-longtitude INT NOT NULL,
-accuracy INT NOT NULL,
+latitude DOUBLE NOT NULL,
+longtitude DOUBLE NOT NULL,
+accuracy DOUBLE NOT NULL,
 type ENUM('ON_FOOT', 'WALKING', 'UNKNOWN', 'STILL', 'RUNNING', 'IN_VEHICLE', 'ON_BICYCLE', 'IN_ROAD_VEHICLE', 'IN_RAIL_VEHICLE', 'IN_TWO_WHEELER_VEHICLE', 'IN_FOUR_WHEELER_VEHICLE', 'TILTING'),
 confidence INT(4),
 year INT(10),
@@ -24,10 +24,11 @@ hour INT(5),
 PRIMARY KEY (userid, timestampms)
 );
 
-CREATE TABLE IF NOT EXISTS activity(
+/*CREATE TABLE IF NOT EXISTS activity(
     userid VARCHAR(255) NOT NULL REFERENCES users(userID),
     timestampms VARCHAR(14),
     type ENUM('ON_FOOT', 'WALKING', 'UNKNOWN', 'STILL', 'RUNNING', 'IN_VEHICLE', 'ON_BICYCLE', 'IN_ROAD_VEHICLE', 'IN_RAIL_VEHICLE', 'IN_TWO_WHEELER_VEHICLE', 'IN_FOUR_WHEELER_VEHICLE', 'TILTING'),
     confidence INT,
     PRIMARY KEY (userid, timestampms)
 );
+*?

@@ -65,7 +65,7 @@ function ajaxCall(){
             vdata = {
                 max: 100,
                 data: json_data.locations};
-
+                
             console.log(vdata); //for debugging
 
             heatmapLayer.setData(vdata);

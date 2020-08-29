@@ -1,7 +1,6 @@
 <?php
 session_start();
-$conn = mysqli_connect("localhost", "root", "", "ecoapp");
-//require 'actions/dbfile.php';
+require '../actions/dbfile.php';
 $userid = $_SESSION['sesuserId'];
 
 $yearfrom = $_POST['yearStart'];
@@ -9,10 +8,10 @@ $yearto = $_POST['yearEnd'];
 $monthfrom = $_POST['monthStart'];
 $monthto = $_POST['monthEnd'];
 
-$sql = "SELECT latitude, longtitude, accuracy, type FROM userdata WHERE
+$sql = "SELECT latitude, longtitude, accuracy FROM userdata WHERE
             month >= $monthfrom AND month <= $monthto AND
             year>=$yearfrom AND year<=$yearto";
-$sqlUserExtra = " AND userid=$userid";
+$sqlUserExtra = " AND userid='$userid'";
 
 if($userid != 'admin'){
     $sql = $sql . $sqlUserExtra;
@@ -25,8 +24,6 @@ function getDataFromDB($connection, $sqlQuery){
 
     while ($row = mysqli_fetch_assoc($result)){
 
-        $row['latitude'] = $row['latitude']/10000000;
-        $row['longtitude'] = $row['longtitude']/10000000;
         $mapData[] = $row;
         }
 
