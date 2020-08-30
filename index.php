@@ -3,46 +3,25 @@
 <head>
   <title>Ecofriendly</title>
   <link rel="stylesheet" href="css/w3css.css">
+    <link rel="stylesheet" href="css/background.css">
+   <link rel="stylesheet" href="css/signup-login.css">
+  
 </head>
-<body style="background-color: #d9e0e7">
-
-<div class="leftHalf">
-  <h1> Be ecofriendly </h1>
-</div>
-<div class="rightHalf">
-  <div class="upBar">
-    <form name="form1" action="actions/loginaction.php"
-           method="POST" autocomplete="off">
-          <center>
-            <?php
-              if (isset($_GET['error'])){
-                if($_GET['error'] == "loginerror"){
-                  echo '<p class="loginerror">Username or passowrd are incorrect.</p>';
-                }
-                else if($_GET['error'] == "no_user"){
-                  echo '<p class="loginerror">There is no user with this username.</p>';
-                }
-              }
-             ?>
-              <div class="separation">
-              <label for="userName" style="text-align: center">Username:
-              </label><br>
-              <input type="text" name="nombre" class="form-input"/>
-              </div>
-              <div class="separation">
-              <label for="pass">Password: </label><br>
-              <input type="password" name="pass" class="form-input"/>
-              </div>
-              <input class="form-btn" name="loginsubmit" type="submit" value="Log-in" />
-          </center></form>
-  </div>
 
 
 
-  <form name="form2" action="actions/signupaction.php"
+
+
+
+
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+	<form name="form2" action="actions/signupaction.php"
          method="POST" autocomplete="off">
         <center>
-              <h2><em> Sign-Up</em></h2>
+         <br>
+		 <br>
+			 
 
               <?php
               $userName = $name = $surname = $email = "";
@@ -200,27 +179,104 @@
               }
           ?>
 
-              <label for="userName" style="text-align: center">Username:
+              <label for="userName" style="text-align: center;">Username:
               </label>
-              <input type="text" name="userName" class="form-input" value="<?php echo $userName;?>">
-              <p></p>
+              <input type="text"	 name="userName" class="form-input" value="<?php echo $userName;?>">
+              
               <label for="name">Name: </label>
               <input type="text" name="name" class="form-input" value="<?php echo $name;?>">
-              <p></p>
+              
               <label for="surname">Surname: </label>
               <input type="text" name="surname" class="form-input" value="<?php echo $surname;?>">
-              <p></p>
+             
               <label for="email">e-mail: </label>
               <input type="text" name="email" class="form-input" value="<?php echo $email;?>">
-              <p></p>
+              
               <label for="passw">Password: </label>
               <input type="password" name="passw" class="form-input">
-              <p></p>
+              
               <label for="passw">Repeat password: </label>
               <input type="password" name="passw2" class="form-input">
               <p></p>
               <input class="form-btn" name="signupsubmit" type="submit" value="Submit" />
-        </center></form>
+        </center></form>	
+	</div>
+	
+	
+	<div class="form-container sign-in-container">
+	
+
+	
+	
+		<form name="form1" action="actions/loginaction.php"
+           method="POST" autocomplete="off">
+		  
+          <center>
+		  <h1>Log in</h1>
+            <?php
+              if (isset($_GET['error'])){
+                if($_GET['error'] == "loginerror"){
+                  echo '<p class="loginerror">Username or password are incorrect.</p>';
+                }
+                else if($_GET['error'] == "no_user"){
+                  echo '<p class="loginerror">There is no user with this username.</p>';
+                }
+              }
+             ?>
+              <div class="separation">
+              <label for="userName" style="text-align: center">Username:
+              </label><br>
+              <input type="text" name="nombre" class="form-input"/>
+              </div>
+              <div class="separation">
+              <label for="pass">Password: </label><br>
+              <input type="password" name="pass" class="form-input"/>
+              </div>
+              <input class="form-btn" name="loginsubmit" type="submit" value="Log-in" />
+          </center></form>
+		
+		
+	</div>
+	
+	
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				
+				<h1>Track your every day travels and become more ecofriendly today!</h1>
+				<p>Already have an account? Click here to Log in!</p>
+				<button class="ghost" id="signIn">Log In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Track your every day travels and become more ecofriendly today!</h1>
+				<p>Don't have an account? Click here to Sign up!</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', () => {
+	container.classList.add("right-panel-active");
+});
+
+signInButton.addEventListener('click', () => {
+	container.classList.remove("right-panel-active");
+});
+
+
+
+
+
+</script>
+
 </div>
 </body>
 </html>
