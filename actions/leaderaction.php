@@ -10,11 +10,14 @@ for($z=1; $z<4; $z++){
   //$i++;
   if($row = mysqli_fetch_array($res)){
     if($userid == $row['userid']){  //bold
-      echo '<tr> <th>'.$z.'. '.$row['name'].' '.$row['surname'][0].'.</th> <th>'.$row['score'].'</th> </tr>';
+      $firstsurlettr = mb_substr($row['surname'], 0, 1, 'utf-8');
+      echo '<tr> <th>'.$z.'. '.$row['name'].' '.$firstsurlettr.'.</th> <th>'.$row['score'].'</th> </tr>';
       $flag = 1;
     }
-    else if($row['userid'] != 'admin')
-      echo '<tr> <td>'.$z.'. '.$row['name'].' '.$row['surname'][0].'.</td> <td>'.$row['score'].'</td> </tr>';
+    else if($row['userid'] != 'admin'){
+      $firstsurlettr = mb_substr($row['surname'], 0, 1, 'utf-8');
+      echo '<tr> <td>'.$z.'. '.$row['name'].' '.$firstsurlettr.'.</td> <td>'.$row['score'].'</td> </tr>';
+    }
     else
       $z--; //gia na min metraei kai ton admin
   }
@@ -26,7 +29,9 @@ if($flag == 0){
     if($row['userid'] == 'admin')
       $z--; //gia na min metraei kai ton admin
     if($userid == $row['userid'] && $row['userid'] != 'admin'){  //bold
-      echo '<tr> <th>'.$z.'. '.$row['name'].' '.$row['surname'][0].'.</th> <th>'.$row['score'].'</th> </tr>';
+      $dokimastiko = "123456789";
+      $firstsurlettr = mb_substr($row['surname'], 0, 1, 'utf-8');
+      echo '<tr> <th>'.$z.'. '.$row['name'].' '.$firstsurlettr.'.</th> <th>'.$row['score'].'</th> </tr>';
     }
     $z++;
   }

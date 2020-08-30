@@ -2,11 +2,13 @@
 
 require 'dbfile.php';
 
-
-
 $sql = "DELETE FROM activity";
-$result = $conn->query($sql);
+mysqli_query($conn, $sql);
 
 $sql = "DELETE FROM userdata";
-$result = $conn->query($sql);
+mysqli_query($conn, $sql);
+
+$sql = "UPDATE users SET score = NULL, lastupload = NULL";
+mysqli_query($conn, $sql);
+
 header("Location: ../admin.php");
