@@ -24,14 +24,14 @@ require 'actions/chartaction.php';
     <link rel="stylesheet" href="css/templatemo-style.css" />
 	<link rel="stylesheet" href="leaflet/leaflet.css"/>
 
-	
 
-	    
+
+
 	   <style>
               #mapid {height: 70%;
                       width: 70%;
                       margin: "auto"
-					
+
 					  }
                       table, th, td {
                       border: 1px solid black;
@@ -46,62 +46,62 @@ require 'actions/chartaction.php';
 				  bottom: 500px;
 				  left: 700px;
 			  }
-			 
-			 
-			 
+
+
+
 		</style>
-	
+
 	<style>
-	
+
 	#title1{
-	
+
 		background-color: #ffffff;
 		  border: 3px solid #73AD21;
-	
+
 	}
-	
+
 	</style>
-	
+
 
   </head>
-  <body>  
+  <body>
 
-  
+
     <section id="hero" class="text-white tm-font-big tm-parallax">
-   
-      <nav class="navbar navbar-expand-md tm-navbar" id="tmNav">              
-        <div class="container">   
-                   
-            
+
+      <nav class="navbar navbar-expand-md tm-navbar" id="tmNav">
+        <div class="container">
+
+
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars navbar-toggler-icon"></i>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-           
-          </div> 
-  
+
+          </div>
+
         </div>
       </nav>
-      
+
       <div class="text-center tm-hero-text-container">
         <div class="tm-hero-text-container-inner">
             <h2 class="tm-hero-title" id="title1" style="color:green; "><b>Ecoapp<b></h2>
-            
-        </div>        
+
+        </div>
       </div>
 
       <div class="tm-next tm-intro-next">
         <a href="#introduction" class="text-center tm-down-arrow-link">
           <i class="fas fa-3x fa-caret-down tm-down-arrow"></i>
         </a>
-      </div>      
+      </div>
     </section>
 
  <section id="introduction" class="tm-section-pad-top">
       <div class="container">
-	  
+
         <div class="row">
-          
+
           <div class="col-lg-6">
             <div class="tm-intro-text-container">
 			 <i class="fas fa-4x fa-bicycle text-center tm-icon"></i>
@@ -109,28 +109,28 @@ require 'actions/chartaction.php';
                 <p class="mb-4 tm-intro-text">
                   Ecoapp is an application that lets you know how <strong>ecofriendly</strong> you are.All you have to do is
 				  upload a json file of your google location history and we will show you the results!
-           
+
             </div>
-		
+
           </div>
-		  
+
         </div>
 
 <br>
 		<br>
 <br>
 <br>
-		
 
-	  
-	  
-	  
+
+
+
+
 	  <div id="leaves">
 	  <img src="img/leaves.gif" >
-	  
+
 	  </div>
-	  
-	  
+
+
 	  	<div id="mapid" style="border:10px solid black"></div>
     <div class="Filters">
       <form  name="Filter">
@@ -141,7 +141,7 @@ require 'actions/chartaction.php';
         <label for="yearTo">Year to:</label>
         <select name="yearTo" id="yearTo">
         </select>
-		
+
 
         <br>
 
@@ -180,25 +180,29 @@ require 'actions/chartaction.php';
         <input type='button' onclick = "ajaxCall()" value='Apply Filters'>
       </form>
     </div>
-	<script src="javascript/yearDropDown.js"></script>
+
+    <form action="actions/uploadaction.php" method="POST" enctype="multipart/form-data">
+          <input type="file" name="jsonfile" id="myFile">
+          <button type="submit" name="uploadsubmit" >Upload your json file!</button>
+      </form>
+
+    <div id="analysisTable" class="tables"></div>
+      
+	  <script src="javascript/yearDropDown.js"></script>
     <script src="leaflet/leaflet.js"></script>
     <script src="heatmap/heatmap.js-master/build/heatmap.js"></script>
     <script src="heatmap/heatmap.js-master/plugins/leaflet-heatmap/leaflet-heatmap.js"></script>
     <script src="leaflet/map.js"> </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-	
-	
-	
-	
-	
-	<form action="actions/uploadaction.php" method="POST" enctype="multipart/form-data">
-        <input type="file" name="jsonfile" id="myFile">
-        <button type="submit" name="uploadsubmit" >Upload your json file!</button>
-    </form>
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
 	<div class="tables">
     <h3>Κορυφαίοι Χρήστες</h3>
     <table style = "width:40%">
@@ -240,7 +244,7 @@ require 'actions/chartaction.php';
     });
 
     </script>
-	
+
 	<br>
 	<br>
 	<br>
@@ -251,46 +255,46 @@ require 'actions/chartaction.php';
 	<br>
 	<br>
 	<br>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div style="background-image: url('img/the-town-bg-02.jpg');  "> 
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div style="background-image: url('img/the-town-bg-02.jpg');  ">
+
+
     <section id="work" class="tm-section-pad-top">
       <div class="container tm-container-gallery">
         <div class="row">
-		
+
           <div class="text-center col-12">
               <h2 class="tm-text-primary tm-section-title mb-4" style="color:red;">The Creators</h2>
               <p class="mx-auto tm-work-description">
                 Below you can see the creators of this amazing application that will save the world!
               </p>
-          </div>            
+          </div>
         </div>
         <div class="row">
             <div class="col-12">
-		
+
                 <div class="mx-auto tm-gallery-container">
-				
+
                     <div class="grid tm-gallery">
 
                       <a href="img/gallery-tn-01.png">
                         <figure class="effect-honey tm-gallery-item">
-						
+
                           <img src="img/gallery-tn-01.png" alt="Image" class="img-fluid">
                           <figcaption>
                             <h2><i>The <span>Memer</span></i></h2>
@@ -305,7 +309,7 @@ require 'actions/chartaction.php';
                             <h2><i>The <span>Athlete</span></i></h2>
                           </figcaption>
                         </figure>
-					100 meters in 10.91 seconds, 200 meters in 20.95...Do i have 
+					100 meters in 10.91 seconds, 200 meters in 20.95...Do i have
 						to say more?
                       </a>
                       <a href="img/gallery-tn-03.jpg">
@@ -318,23 +322,23 @@ require 'actions/chartaction.php';
 
 						Picture says it all...The guy is like "fuck my life with this retarded school"
                       </a>
-                      
-                     
+
+
                     </div>
-                </div>                
-            </div>        
+                </div>
+            </div>
           </div>
       </div>
     </section>
 
-    
 
-    <script src="js/jquery-1.9.1.min.js"></script>     
+
+    <script src="js/jquery-1.9.1.min.js"></script>
     <script src="slick/slick.min.js"></script>
     <script src="magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.singlePageNav.min.js"></script>     
-    <script src="js/bootstrap.min.js"></script> 
-	
+    <script src="js/jquery.singlePageNav.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
     <script>
 
       function getOffSet(){
@@ -343,7 +347,7 @@ require 'actions/chartaction.php';
 
         if(windowHeight > 500) {
           _offset = 400;
-        } 
+        }
         if(windowHeight > 680) {
           _offset = 300
         }
@@ -362,7 +366,7 @@ require 'actions/chartaction.php';
       }
 
       // Parallax function
-      // Adapted based on https://codepen.io/roborich/pen/wpAsm        
+      // Adapted based on https://codepen.io/roborich/pen/wpAsm
       var background_image_parallax = function($object, multiplier, forceSet){
         multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
         multiplier = 1 - multiplier;
@@ -372,7 +376,7 @@ require 'actions/chartaction.php';
         if(forceSet) {
           setParallaxPosition($doc, multiplier, $object);
         } else {
-          $(window).scroll(function(){          
+          $(window).scroll(function(){
             setParallaxPosition($doc, multiplier, $object);
           });
         }
@@ -386,41 +390,41 @@ require 'actions/chartaction.php';
         $(window).scroll(function(){
           var firstTop = $object.offset().top,
               pos = $(window).scrollTop(),
-              yPos = Math.round((multiplier * (firstTop - pos)) - 186);              
+              yPos = Math.round((multiplier * (firstTop - pos)) - 186);
 
           var bg_css = 'center ' + yPos + 'px';
 
           $object.css({"background-position" : bg_css });
         });
       };
-      
+
       $(function(){
         // Hero Section - Background Parallax
         background_image_parallax($(".tm-parallax"), 0.30, false);
-        background_image_parallax_2($("#contact"), 0.80);   
-        
+        background_image_parallax_2($("#contact"), 0.80);
+
         // Handle window resize
         window.addEventListener('resize', function(){
           background_image_parallax($(".tm-parallax"), 0.30, true);
         }, true);
 
         // Detect window scroll and update navbar
-        $(window).scroll(function(e){          
+        $(window).scroll(function(e){
           if($(document).scrollTop() > 120) {
             $('.tm-navbar').addClass("scroll");
           } else {
             $('.tm-navbar').removeClass("scroll");
           }
         });
-        
-        // Close mobile menu after click 
+
+        // Close mobile menu after click
         $('#tmNav a').on('click', function(){
-          $('.navbar-collapse').removeClass('show'); 
+          $('.navbar-collapse').removeClass('show');
         })
 
         // Scroll to corresponding section with animation
-        $('#tmNav').singlePageNav();        
-        
+        $('#tmNav').singlePageNav();
+
         // Add smooth scrolling to all links
         // https://www.w3schools.com/howto/howto_css_smooth_scroll.asp
         $("a").on('click', function(event) {
