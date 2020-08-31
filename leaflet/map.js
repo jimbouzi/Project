@@ -28,8 +28,6 @@ let cfg = { "radius": 40,
 
 let heatmapLayer = new HeatmapOverlay(cfg);
 
-var analysisContainer = document.getElementById("analysisTable");
-
 function ajaxCall(){
     console.log("this is from the click");
 
@@ -67,10 +65,8 @@ function ajaxCall(){
             vdata = {
                 max: 100,
                 data: json_data.locations};
-
+                
             console.log(vdata); //for debugging
-
-            htmlgenerator(json_data.tableData);
 
             heatmapLayer.setData(vdata);
             mymap.addLayer(heatmapLayer);
@@ -78,63 +74,4 @@ function ajaxCall(){
     }
 };
 
-function htmlgenerator(data){
-  var analysisContainerData = document.getElementById("analysisTableData");
-  if(!!analysisContainerData){
-    analysisContainerData.remove();
-  }
-  if(data.length > 0){
-    html = `<div id="analysisTableData" class="tables">
-                <h3>Ανάλυση Στοιχείων</h3>
-                <table style = "width:50%">
-                  <tr>
-                    <th>Είδος Δραστηριότητας</th>
-                    <th>Ποσοστό</th>
-                    <th>Πιο Ενεργή Ώρα</th>
-                    <th>Πιο Ενεργή Μέρα</th>
-                  </tr>
-                  `;
-    for(i=0; i<data.length; i++) {
-      html +=`<tr>
-               <td>`+data[i].type+`</td>
-               <td>`+data[i].percent+`%</td>
-               <td>`+data[i].MaxHour+`:00</td>
-               <td>`+findDay(data[i].MaxDay)+`</td>
-             </tr>
-             `;
-    }
-    html += '</table> </div>';
-    analysisContainer.insertAdjacentHTML('beforeend', html);
-    console.log(html);
-  }
-};
-
-function findDay(dayInt){
-  var dayString;
-  switch(dayInt){
-    case 0:
-      dayString = "Κυριακή";
-    break;
-    case 1:
-      dayString = "Δευτέρα";
-    break;
-    case 2:
-      dayString = "Τρίτη";
-    break;
-    case 3:
-      dayString = "Τετάρτη";
-    break;
-    case 4:
-      dayString = "Πέμπτη";
-    break;
-    case 5:
-      dayString = "Παρασκευή";
-    break;
-    case 6:
-      dayString = "Σάββατο";
-    break;
-    default:
-      dayString = "";
-  }
-  return dayString;
-};
+//!!! Pros to paron douleyei mono gia to monthFrom !!!

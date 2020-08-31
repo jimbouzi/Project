@@ -21,11 +21,11 @@
     header("Location: ../index.php?error=invaliduserName&name=".$nam."&surname=".$surnam."&email=".$mail);
     exit();
   }
-  else if (!preg_match("/^[a-zA-Z\p{Greek}]*$/u", $nam)){
+  else if (!preg_match("/^[a-zA-Z]*$/", $nam)){
     header("Location: ../index.php?error=invalidname&userName=".$usern."&surname=".$surnam."&email=".$mail);
     exit();
   }
-  else if (!preg_match("/^[a-zA-Z\p{Greek}]*$/u", $surnam)){
+  else if (!preg_match("/^[a-zA-Z]*$/", $surnam)){
     header("Location: ../index.php?error=invalidsurname&userName=".$usern."&name=".$nam."&email=".$mail);
     exit();
   }
@@ -57,7 +57,7 @@
         exit();
       }
       else{
-        $sql = "INSERT INTO users (userID, userName, name, surname, email, pass, score) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO users (userID, userName, name, surname, email, pass) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)){
           header("Location: ../index.php?error=sqlerror");
@@ -69,14 +69,13 @@
         $encryption_iv = random_bytes(openssl_cipher_iv_length($ciphering));
         $userid = openssl_encrypt($mail, $ciphering, $password, '0', $encryption_iv);
 
-        $miden = 0;
-        mysqli_stmt_bind_param($stmt, "ssssssi",$userid, $usern, $nam, $surnam, $mail, $hashedPwd, $miden);
-        mysqli_stmt_execute($stmt);
-        session_start();
-        $_SESSION['sesuserId']= $userid;
-        $_SESSION['sesusername']= $usern;
-        header("Location: ../user.php?signup=success");
-        exit();
+         mysqli_stmt_bind_param($stmt, "ssssss",$userid, $usern, $nam, $surnam, $mail, $hashedPwd);
+         mysqli_stmt_execute($stmt);
+         session_start();
+         $_SESSION['sesuserId']= $userid;
+         $_SESSION['sesusername']= $usern;
+         header("Location: ../user.php?signup=success");
+         exit();
         }
       }
     }
