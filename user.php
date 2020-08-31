@@ -75,16 +75,17 @@ require 'actions/chartaction.php';
         <input type='button' onclick = "ajaxCall()" value='Apply Filters'>
       </form>
     </div>
+    <form action="actions/uploadaction.php" method="POST" enctype="multipart/form-data">
+        <input type="file" name="jsonfile" id="myFile">
+        <button type="submit" name="uploadsubmit">Upload your json file!</button>
+    </form>
+    <div id="analysisTable" class="tables"></div>
     <script src="javascript/yearDropDown.js"></script>
     <script src="leaflet/leaflet.js"></script>
     <script src="heatmap/heatmap.js-master/build/heatmap.js"></script>
     <script src="heatmap/heatmap.js-master/plugins/leaflet-heatmap/leaflet-heatmap.js"></script>
     <script src="leaflet/map.js"> </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    <form action="actions/uploadaction.php" method="POST" enctype="multipart/form-data">
-        <input type="file" name="jsonfile" id="myFile">
-        <button type="submit" name="uploadsubmit">Upload your json file!</button>
-    </form>
 
 
     <div class="tables">
