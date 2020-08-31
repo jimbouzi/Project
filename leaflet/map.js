@@ -83,28 +83,30 @@ function htmlgenerator(data){
   if(!!analysisContainerData){
     analysisContainerData.remove();
   }
-  html = `<div id="analysisTableData" class="tables">
-              <h3>Ανάλυση Στοιχείων</h3>
-              <table style = "width:50%">
-                <tr>
-                  <th>Είδος Δραστηριότητας</th>
-                  <th>Ποσοστό</th>
-                  <th>Πιο Ενεργή Ώρα</th>
-                  <th>Πιο Ενεργή Μέρα</th>
-                </tr>
-                `;
-  for(i=0; i<data.length; i++) {
-    html +=`<tr>
-             <td>`+data[i].type+`</td>
-             <td>`+data[i].percent+`%</td>
-             <td>`+data[i].MaxHour+`:00</td>
-             <td>`+findDay(data[i].MaxDay)+`</td>
-           </tr>
-           `;
+  if(data.length > 0){
+    html = `<div id="analysisTableData" class="tables">
+                <h3>Ανάλυση Στοιχείων</h3>
+                <table style = "width:50%">
+                  <tr>
+                    <th>Είδος Δραστηριότητας</th>
+                    <th>Ποσοστό</th>
+                    <th>Πιο Ενεργή Ώρα</th>
+                    <th>Πιο Ενεργή Μέρα</th>
+                  </tr>
+                  `;
+    for(i=0; i<data.length; i++) {
+      html +=`<tr>
+               <td>`+data[i].type+`</td>
+               <td>`+data[i].percent+`%</td>
+               <td>`+data[i].MaxHour+`:00</td>
+               <td>`+findDay(data[i].MaxDay)+`</td>
+             </tr>
+             `;
+    }
+    html += '</table> </div>';
+    analysisContainer.insertAdjacentHTML('beforeend', html);
+    console.log(html);
   }
-  html += '</table> </div>';
-  analysisContainer.insertAdjacentHTML('beforeend', html);
-  console.log(html);
 };
 
 function findDay(dayInt){
