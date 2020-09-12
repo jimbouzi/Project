@@ -22,12 +22,21 @@ class TableData {
 }
 $yearFrom = $_POST['yearStart'];
 $yearTo = $_POST['yearEnd'];
+
 $monthFrom = $_POST['monthStart'];
 $monthTo = $_POST['monthEnd'];
 
+$dayFrom = $_POST['dayStart'];
+$dayTo = $_POST['dayEnd'];
+
+$hourFrom = $_POST['hourStart'];
+$hourTo = $_POST['hourEnd'];
+
 $sql = "SELECT latitude, longtitude, accuracy, type, day, hour FROM userdata WHERE
-        month >= $monthFrom AND month <= $monthTo AND
-        year>=$yearFrom AND year<=$yearTo";
+        year>=$yearFrom AND year<=$yearTo AND
+        month >= $monthFrom AND month <= $monthTo AND 
+        day >= $dayFrom AND day <= $dayTo AND
+        hour >= $hourFrom AND hour <= $hourTo";
 $sqlUserExtra = " AND userid='$userid'";
 
 if($userid != 'admin'){

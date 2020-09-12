@@ -36,40 +36,6 @@ session_start();
     <button onclick="return confirm('Are you sure you want to delete the data from the Database?')">Delete Data</button>
   </form>
 
-  <form name="Filter" method="POST">
-    From:
-    <input type="date" name="dateFrom" />
-    <br />
-    To:
-    <input type="date" name="dateTo" />
-    <input type="submit" name="submit" value="Show dates as timestampms" />
-
-
-    <?php
-      	$from_date = strtotime($_POST['dateFrom']);
-      	echo $from_date;
-
-        echo "<br>";
-
-      	$to_date= strtotime($_POST['dateTo']);
-      	echo $to_date;
-
-        require 'actions/dbfile.php';
-
-        $sql = "SELECT timestampms FROM userdata WHERE timestampms >= $from_date && timestampms <= $to_date";
-        $result = $conn->query($sql);
-
-        if($result -> num_rows>0){
-
-          while($row = $result -> fetch_assoc()){
-            echo $row["timestampms"];
-            echo "<br>";
-          }
-        }
-      	?>
-
-      <br>
-
     <form>
       <label for="yearFrom">Year from:</label>
       <select name="yearFrom" id="yearFrom">
@@ -148,12 +114,56 @@ session_start();
       <select name="hourfrom" id="hourFrom">
         <option value=0>0 </option>
         <option value=1>1 </option>
+        <option value=2>2 </option>
+        <option value=3>3 </option>
+        <option value=4>4 </option>
+        <option value=5>5 </option>
+        <option value=6>6 </option>
+        <option value=7>7 </option>
+        <option value=8>8 </option>
+        <option value=9>9 </option>
+        <option value=10>10 </option>
+        <option value=11>11 </option>
+        <option value=12>12 </option>
+        <option value=13>13 </option>
+        <option value=14>14 </option>
+        <option value=15>15 </option>
+        <option value=16>16 </option>
+        <option value=17>17 </option>
+        <option value=18>18 </option>
+        <option value=19>19 </option>
+        <option value=20>20 </option>
+        <option value=21>21 </option>
+        <option value=22>22 </option>
+        <option value=23>23 </option>
       </select>
 
       <label for="hourTo">Hour To:</label>
       <select name="hourTo" id="hourTo">
-        <option value=0>0 </option>
+      <option value=0>0 </option>
         <option value=1>1 </option>
+        <option value=2>2 </option>
+        <option value=3>3 </option>
+        <option value=4>4 </option>
+        <option value=5>5 </option>
+        <option value=6>6 </option>
+        <option value=7>7 </option>
+        <option value=8>8 </option>
+        <option value=9>9 </option>
+        <option value=10>10 </option>
+        <option value=11>11 </option>
+        <option value=12>12 </option>
+        <option value=13>13 </option>
+        <option value=14>14 </option>
+        <option value=15>15 </option>
+        <option value=16>16 </option>
+        <option value=17>17 </option>
+        <option value=18>18 </option>
+        <option value=19>19 </option>
+        <option value=20>20 </option>
+        <option value=21>21 </option>
+        <option value=22>22 </option>
+        <option value=23>23 </option>
       </select>
 
       <input type='button' name='allHours' onclick='getLastDropdownElement("hourTo"), getFirstDropdownElement("hourFrom")' value='All Hours'></input>

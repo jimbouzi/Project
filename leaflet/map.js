@@ -46,12 +46,17 @@ var analysisContainer = document.getElementById("analysisTable");
 function ajaxCall(){
     console.log("this is from the click");
 
-    var monthStart = document.getElementById("monthFrom").value;
-    var monthEnd = document.getElementById("monthTo").value;
     var yearStart = document.getElementById("yearFrom").value;
     var yearEnd = document.getElementById("yearTo").value;
-    //console.log("Month From is: " + monthStart);
-    //console.log("Month To is: " + monthEnd);
+
+    var monthStart = document.getElementById("monthFrom").value;
+    var monthEnd = document.getElementById("monthTo").value;
+    
+    var dayStart = document.getElementById("dayFrom").value;
+    var dayEnd = document.getElementById("dayTo").value;
+
+    var hourStart = document.getElementById("hourFrom").value;
+    var hourEnd = document.getElementById("hourTo").value;
 
     var ajax = new XMLHttpRequest();
     var method = "POST";
@@ -64,7 +69,10 @@ function ajaxCall(){
     // sending ajax request
     //xreiazotan header, kai allh syntaksi sto send
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    ajax.send('monthStart=' + monthStart + '&monthEnd=' + monthEnd + '&yearStart=' + yearStart +'&yearEnd=' + yearEnd);
+    ajax.send('&yearStart=' + yearStart +'&yearEnd=' + yearEnd +
+              '&monthStart=' + monthStart + '&monthEnd=' + monthEnd +
+              '&dayStart=' + dayStart + '&dayEnd=' + dayEnd +
+              '&hourStart=' + hourStart + '&hourEnd=' + hourEnd);
 
     // receiving response from url
     ajax.onreadystatechange = function()
