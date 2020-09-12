@@ -187,21 +187,17 @@ require 'actions/chartaction.php';
       </form>
 
     <div id="analysisTable" class="tables"></div>
-      
+
 	  <script src="javascript/yearDropDown.js"></script>
     <script src="leaflet/leaflet.js"></script>
     <script src="heatmap/heatmap.js-master/build/heatmap.js"></script>
     <script src="heatmap/heatmap.js-master/plugins/leaflet-heatmap/leaflet-heatmap.js"></script>
     <script src="leaflet/map.js"> </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-
-
-
-
-
-
-
-
+    <br>
+    <form action="actions/logoutaction.php" method="POST">
+      <button type="submit" name="logoutsubmit">Logout</button>
+    </form>
 
 	<div class="tables">
     <h3>Κορυφαίοι Χρήστες</h3>

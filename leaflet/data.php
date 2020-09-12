@@ -69,7 +69,9 @@ function getDataFromDB($connection, $sqlQuery){
       array_push($tableData, new TableData($type, $percent, $MaxDay, $MaxHour));
     }//pername ta dedomena se neo pinaka me tin morfi pou theloume
 
-    echo '{"locations" : ';
+    echo '{"userID" : "' ;
+    echo $_SESSION['sesuserId'];
+    echo '", "locations" : ';
     echo json_encode($mapData);
     echo ', "tableData" : ';
     echo json_encode($tableData);

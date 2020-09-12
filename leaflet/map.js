@@ -75,7 +75,7 @@ function ajaxCall(){
 
             let json_data = JSON.parse(this.responseText);
 
-            console.log(json_data.locations); //for debugging
+            console.log(json_data); //for debugging
 
             vdata = {
                 max: 100,
@@ -83,7 +83,9 @@ function ajaxCall(){
 
             console.log(vdata); //for debugging
 
-            htmlgenerator(json_data.tableData);
+            if(json_data.userID != "admin"){
+              htmlgenerator(json_data.tableData);
+            }
 
             heatmapLayer.setData(vdata);
             mymap.addLayer(heatmapLayer);
