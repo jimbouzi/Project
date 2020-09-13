@@ -335,6 +335,7 @@ require 'actions/chartaction.php';
     <script src="js/jquery.singlePageNav.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
+
     <script>
 
       function getOffSet(){
@@ -383,15 +384,7 @@ require 'actions/chartaction.php';
         multiplier = 1 - multiplier;
         var $doc = $(document);
         $object.css({"background-attachment" : "fixed"});
-        $(window).scroll(function(){
-          var firstTop = $object.offset().top,
-              pos = $(window).scrollTop(),
-              yPos = Math.round((multiplier * (firstTop - pos)) - 186);
-
-          var bg_css = 'center ' + yPos + 'px';
-
-          $object.css({"background-position" : bg_css });
-        });
+       
       };
 
       $(function(){
