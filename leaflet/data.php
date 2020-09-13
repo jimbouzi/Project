@@ -32,11 +32,30 @@ $dayTo = $_POST['dayEnd'];
 $hourFrom = $_POST['hourStart'];
 $hourTo = $_POST['hourEnd'];
 
+/*synartisi gia na doulevoun ta filters akoma kai otan $monthFrom > $monthTo
+H monh allagh pou xreiazetai sthn sql einai to AND na ginetai OR
+Douleuei kanonika, xreiazetai kalytero onoma, opws kai oi metavlites
+Profanws gia to etos den exei nohma
+*/
+function isLangerThan($x, $y){
+  if($x > $y){
+    return "OR";
+  } else{
+    return "AND";
+  }
+}
+
+//allagh onomatwn
+$mines = isLangerThan($monthFrom, $monthTo); 
+$meres = isLangerThan($dayFrom, $dayTo);
+$ores = isLangerThan($hourFrom, $hourTo);
+
+//allagh onomatwn mesa sto query
 $sql = "SELECT latitude, longtitude, accuracy, type, day, hour FROM userdata WHERE
         year>=$yearFrom AND year<=$yearTo AND
-        month >= $monthFrom AND month <= $monthTo AND 
-        day >= $dayFrom AND day <= $dayTo AND
-        hour >= $hourFrom AND hour <= $hourTo";
+        month >= $monthFrom $mines month <= $monthTo AND 
+        day >= $dayFrom $meres day <= $dayTo AND
+        hour >= $hourFrom $ores hour <= $hourTo";
 $sqlUserExtra = " AND userid='$userid'";
 
 if($userid != 'admin'){

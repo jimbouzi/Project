@@ -170,15 +170,22 @@ session_start();
 
       <br>
 
-      <label for="movement">Type of movement:</label>
+      <!--<label for="movement">Type of movement:</label>
       <select name="movement" id="movement">
         <option value="Walk">Walk</option>
         <option value="Run">Run</option>
         <option value="Bike">Bike</option>
         <option value="Car">Car</option>
-      </select>
+      </select> -->
 
-      <input type='button' name='allTypes' value='All Types'></input>
+      <label for='movement' id='movement'> Type of movement
+        <input type='checkbox' id='walkValue'>Walk</input>
+        <input type='checkbox' id='runValue'>Run</input>
+        <input type='checkbox' id='bikeValue'>Bike</input>
+        <input type='checkbox' id='carValue'>Car</input>
+      </label>
+
+      <input type='button' name='allTypes' value='All Types' onclick='selectAllMovements()'></input>
 
       <br>
 
