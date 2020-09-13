@@ -53,14 +53,19 @@ $ores = isLangerThan($hourFrom, $hourTo);
 //allagh onomatwn mesa sto query
 $sql = "SELECT latitude, longtitude, accuracy, type, day, hour FROM userdata WHERE
         year>=$yearFrom AND year<=$yearTo AND
-        month >= $monthFrom $mines month <= $monthTo AND 
-        day >= $dayFrom $meres day <= $dayTo AND
-        hour >= $hourFrom $ores hour <= $hourTo";
+        (month >= $monthFrom $mines month <= $monthTo)";
+                
+$sqlAdminExtra = " AND (day >= $dayFrom $meres day <= $dayTo)
+                   AND (hour >= $hourFrom $ores hour <= $hourTo)";
+
 $sqlUserExtra = " AND userid='$userid'";
 
 if($userid != 'admin'){
     $sql = $sql . $sqlUserExtra;
+} else{
+  $sql = $sql . $sqlAdminExtra;
 }
+
 
 function getDataFromDB($connection, $sqlQuery){
 

@@ -96,7 +96,7 @@ session_start();
         <option value=0>Sunday </option>
         <option value=1>Monday </option>
         <option value=2>Tuesday </option>
-        <option value=3>wednesday </option>
+        <option value=3>Wednesday </option>
         <option value=4>Thursday </option>
         <option value=5>Friday </option>
         <option value=6>Saturday </option>
@@ -176,22 +176,13 @@ session_start();
 
       <br>
 
-      <!--<label for="movement">Type of movement:</label>
-      <select name="movement" id="movement">
-        <option value="Walk">Walk</option>
-        <option value="Run">Run</option>
-        <option value="Bike">Bike</option>
-        <option value="Car">Car</option>
-      </select> -->
-
       <label for='movement' id='movement'> Type of movement
-        <input type='checkbox' id='walkValue'>Walk</input>
-        <input type='checkbox' id='runValue'>Run</input>
-        <input type='checkbox' id='bikeValue'>Bike</input>
-        <input type='checkbox' id='carValue'>Car</input>
+        <input type='checkbox' id='stillValue' name='movementCheckbox'>Still</input>
+        <input type='checkbox' id='tiltingValue' name='movementCheckbox'>Tilting</input>
+        <input type='checkbox' id='onFootValue' name='movementCheckbox'>On Foot</input>
+        <input type='checkbox' id='inVehicleValue' name='movementCheckbox'>In Vehicle</input>
+        <input type='checkbox' id='onBicycleValue' name='movementCheckbox'>On Bicycle</input>
       </label>
-
-      <input type='button' name='allTypes' value='All Types' onclick='selectAllMovements()'></input>
 
       <br>
 

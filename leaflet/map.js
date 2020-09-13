@@ -73,7 +73,7 @@ function ajaxCall(){
               '&monthStart=' + monthStart + '&monthEnd=' + monthEnd +
               '&dayStart=' + dayStart + '&dayEnd=' + dayEnd +
               '&hourStart=' + hourStart + '&hourEnd=' + hourEnd);
-
+          
     // receiving response from url
     ajax.onreadystatechange = function()
     {

@@ -130,6 +130,20 @@ require 'actions/chartaction.php';
 
 	  </div>
 
+        <!--Ayta einai den fainontai sth selida --> 
+        <select name="dayFrom" id="dayFrom" style="visibility: hidden">
+          <option value=-1>-1 </option>        
+        </select>
+        <select name="dayTo" id="dayTo" style="visibility: hidden">
+          <option value=-1>-1 </option>        
+        </select>
+        <select name="hourfrom" id="hourFrom" style="visibility: hidden">
+          <option value=-1>-1 </option>
+        </select>
+        <select name="hourTo" id="hourTo" style="visibility: hidden">
+          <option value=-1>-1 </option>
+        </select>
+        <!--Xreiazetai na mh fainontai gia na leitoyrgei to map.js -->
 
 	  	<div id="mapid" style="border:10px solid black"></div>
     <div class="Filters">
