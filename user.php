@@ -143,12 +143,12 @@ require 'actions/chartaction.php';
         <select name="hourTo" id="hourTo" style="visibility: hidden">
           <option value=-1>-1 </option>
         </select>
-        <input type='checkbox' id='stillValue' name='movementCheckbox' style="visibility: hidden">Still</input>
-        <input type='checkbox' id='tiltingValue' name='movementCheckbox' style="visibility: hidden">Tilting</input>
-        <input type='checkbox' id='onFootValue' name='movementCheckbox' style="visibility: hidden">On Foot</input>
-        <input type='checkbox' id='inVehicleValue' name='movementCheckbox' style="visibility: hidden">In Vehicle</input>
-        <input type='checkbox' id='onBicycleValue' name='movementCheckbox' style="visibility: hidden">On Bicycle</input>
-        <input type='checkbox' id='unknownValue' name='movementCheckbox' style="visibility: hidden">Unknown</input>
+        <input type='checkbox' id='stillValue' name='movementCheckbox' style="visibility: hidden"></input>
+        <input type='checkbox' id='tiltingValue' name='movementCheckbox' style="visibility: hidden"></input>
+        <input type='checkbox' id='onFootValue' name='movementCheckbox' style="visibility: hidden"></input>
+        <input type='checkbox' id='inVehicleValue' name='movementCheckbox' style="visibility: hidden"></input>
+        <input type='checkbox' id='onBicycleValue' name='movementCheckbox' style="visibility: hidden"></input>
+        <input type='checkbox' id='unknownValue' name='movementCheckbox' style="visibility: hidden"></input>
         <!--Xreiazetai na mh fainontai gia na leitoyrgei to map.js -->
 
 	  	<div id="mapid" style="border:10px solid black"></div>
