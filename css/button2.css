@@ -1,0 +1,29 @@
+
+#bt2 {
+  display: inline-block;
+  width: auto;
+  padding: 15px 35px;
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0 auto 20px;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+}
+.blue {
+  background: #6D9BCA;
+}
+.red {
+  background: #CA3721;  
+}
+.green {
+  background: #5ED64B; 
+}
+.orange {
+  background: orange;
+}
+#bt2:hover {
+  margin-top: -5px;
+  margin-bottom: 25px;
+}

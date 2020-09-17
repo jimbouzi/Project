@@ -23,6 +23,12 @@ require 'actions/chartaction.php';
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/templatemo-style.css" />
 	<link rel="stylesheet" href="leaflet/leaflet.css"/>
+	<link rel="stylesheet" href="css/button1.css" />
+	<link rel="stylesheet" href="css/button2.css" />
+	<link rel="stylesheet" href="css/filters.css" />
+	
+
+	
 
 
 
@@ -102,11 +108,11 @@ require 'actions/chartaction.php';
 
         <div class="row">
 
-          <div class="col-lg-6">
+          <div class="col-lg-6" style="font-family:Comic Sans MS; color:green">
             <div class="tm-intro-text-container">
 			 <i class="fas fa-4x fa-bicycle text-center tm-icon"></i>
-                <h2 class="tm-text-primary mb-4 tm-section-title" >How it works</h2>
-                <p class="mb-4 tm-intro-text">
+                <h2 class="tm-text-primary mb-4 tm-section-title" style="color:green" >How it works</h2>
+                <p class="mb-4 tm-intro-text" >
                   Ecoapp is an application that lets you know how <strong>ecofriendly</strong> you are.All you have to do is
 				  upload a json file of your google location history and we will show you the results!
 
@@ -151,10 +157,11 @@ require 'actions/chartaction.php';
         <input type='checkbox' id='unknownValue' name='movementCheckbox' style="visibility: hidden"></input>
         <!--Xreiazetai na mh fainontai gia na leitoyrgei to map.js -->
 
-	  	<div id="mapid" style="border:10px solid black"></div>
+	  	<div id="mapid" style="border:7px solid green"></div>
+		<br>
     <div class="Filters">
-      <form  name="Filter">
-        <label for="yearFrom">Year from:</label>
+      <form  name="Filter" style="font-family:Comic Sans MS; color:green" >
+        <label for="yearFrom" >Year from:</label>
         <select name="yearFrom" id="yearFrom">
         </select>
 
@@ -196,14 +203,14 @@ require 'actions/chartaction.php';
           <option value=11>November </option>
           <option value=12>December </option>
         </select>
-
-        <input type='button' onclick = "ajaxCall()" value='Apply Filters'>
+		
+        <input type='button' id="bt1"  onclick = "ajaxCall()" value='Apply Filters'>
       </form>
     </div>
 
     <form action="actions/uploadaction.php" method="POST" enctype="multipart/form-data">
           <input type="file" name="jsonfile" id="myFile">
-          <button type="submit" name="uploadsubmit" >Upload your json file!</button>
+          <button type="submit" id="bt1" name="uploadsubmit" >Upload your json file!</button>
       </form>
 
     <div id="analysisTable" class="tables"></div>
@@ -216,10 +223,10 @@ require 'actions/chartaction.php';
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <br>
     <form action="actions/logoutaction.php" method="POST">
-      <button type="submit" name="logoutsubmit">Logout</button>
+      <button type="submit" class="button red" id="bt2" name="logoutsubmit">Logout</button>
     </form>
 
-	<div class="tables">
+	<div class="tables" style="font-family:Impact; color:black;">
     <h3>Κορυφαίοι Χρήστες</h3>
     <table style = "width:40%">
       <tr>
@@ -230,11 +237,11 @@ require 'actions/chartaction.php';
       </table>
     </div>
 
-    <p> Το συνολικό σας score είναι: <?= $wholescore ?> <p>
-    <p> Η περίοδος που καλύπτουν οι εγγραφές σας είναι από <?= $mintimestamp ?> μέχρι <?= $maxtimestamp ?>. </p>
+    <p  style="color:green;"> Το συνολικό σας score είναι: <?= $wholescore ?> <p>
+    <p style="color:green;"> Η περίοδος που καλύπτουν οι εγγραφές σας είναι από <?= $mintimestamp ?> μέχρι <?= $maxtimestamp ?>. </p>
     <!-- To parapanw prepei na einai meta to leaderboard gia na exei ginei to require 'actions/leaderboard' kai na blepei tis metavlites-->
-    <p> Το τελευταίο σας upload έγινε στις <?= $lastupload ?>.</p>
-    <canvas id="chart" width="500" height="150"></canvas>
+    <p style="color:green;"> Το τελευταίο σας upload έγινε στις <?= $lastupload ?>.</p>
+    <canvas id="chart" style="border:5px solid green" width="500" height="150"></canvas>
     <script type="text/javascript">
 
     new Chart(document.getElementById("chart"), {
@@ -271,8 +278,6 @@ require 'actions/chartaction.php';
 	<br>
 	<br>
 	<br>
-
-
 
 
 
@@ -354,6 +359,7 @@ require 'actions/chartaction.php';
     <script src="magnific-popup/jquery.magnific-popup.min.js"></script>
     <script src="js/jquery.singlePageNav.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+	<script src="js/up_button.js"></script>
 
 
     <script>
