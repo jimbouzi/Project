@@ -177,12 +177,14 @@ session_start();
       <br>
 
       <label for='movement' id='movement'> Type of movement
-        <input type='checkbox' id='stillValue' name='movementCheckbox'>Still</input>
-        <input type='checkbox' id='tiltingValue' name='movementCheckbox'>Tilting</input>
-        <input type='checkbox' id='onFootValue' name='movementCheckbox'>On Foot</input>
-        <input type='checkbox' id='inVehicleValue' name='movementCheckbox'>In Vehicle</input>
-        <input type='checkbox' id='onBicycleValue' name='movementCheckbox'>On Bicycle</input>
+        <input type='checkbox' id='stillValue' value='STILL' name='movementCheckbox'>Still</input>
+        <input type='checkbox' id='tiltingValue' value='TILTING' name='movementCheckbox'>Tilting</input>
+        <input type='checkbox' id='onFootValue' value='ON_FOOT' name='movementCheckbox'>On Foot</input>
+        <input type='checkbox' id='inVehicleValue' value='IN_VEHICLE' name='movementCheckbox'>In Vehicle</input>
+        <input type='checkbox' id='onBicycleValue' value='ON_BICYCLE' name='movementCheckbox'>On Bicycle</input>
+        <input type='checkbox' id='unknownValue' value='UNKNOWN' name='movementCheckbox'>Unknown</input>
       </label>
+
 
       <br>
 

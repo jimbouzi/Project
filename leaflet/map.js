@@ -58,6 +58,26 @@ function ajaxCall(){
     var hourStart = document.getElementById("hourFrom").value;
     var hourEnd = document.getElementById("hourTo").value;
 
+    var isStill = document.getElementById("stillValue");
+    var isTilting = document.getElementById("tiltingValue");
+    var isOnFoot = document.getElementById("onFootValue");
+    var isInVehicle = document.getElementById("inVehicleValue");
+    var isOnBicycle = document.getElementById("onBicycleValue");
+    var isUnknown = document.getElementById("unknownValue");
+
+    var moveArray = [isStill, isTilting, isOnFoot, isInVehicle, isOnBicycle, isUnknown];
+
+    for (var i in moveArray){
+      if(moveArray[i].checked == true){ 
+        moveArray[i] = moveArray[i].value;
+      }else{
+        moveArray[i].value = "false";  ///thema
+        moveArray[i] = moveArray[i].value;
+      }
+      console.log(moveArray[i]);
+    }
+    //edw einai swsto
+
     var ajax = new XMLHttpRequest();
     var method = "POST";
     var url = "leaflet/data.php"
@@ -66,13 +86,18 @@ function ajaxCall(){
 
     ajax.open(method, url, asynchronous);
 
+    ajaxSendString =  '&yearStart=' + yearStart +'&yearEnd=' + yearEnd +
+                      '&monthStart=' + monthStart + '&monthEnd=' + monthEnd +
+                      '&dayStart=' + dayStart + '&dayEnd=' + dayEnd +
+                      '&hourStart=' + hourStart + '&hourEnd=' + hourEnd +
+                      '&isStill=' + moveArray[0] + '&isTilting=' + moveArray[1] +
+                      '&isOnFoot=' + moveArray[2] + '&isInVehicle=' + moveArray[3] +
+                      '&isOnBicycle=' + moveArray[4] + '&isUnknown=' + moveArray[5];
+
     // sending ajax request
     //xreiazotan header, kai allh syntaksi sto send
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    ajax.send('&yearStart=' + yearStart +'&yearEnd=' + yearEnd +
-              '&monthStart=' + monthStart + '&monthEnd=' + monthEnd +
-              '&dayStart=' + dayStart + '&dayEnd=' + dayEnd +
-              '&hourStart=' + hourStart + '&hourEnd=' + hourEnd);
+    ajax.send(ajaxSendString);
           
     // receiving response from url
     ajax.onreadystatechange = function()
@@ -82,14 +107,14 @@ function ajaxCall(){
         {
 
             let json_data = JSON.parse(this.responseText);
-
-            console.log(json_data); //for debugging
+            //console.log(this.responseText);
+            //console.log(json_data); //for debugging
 
             vdata = {
                 max: 100,
                 data: json_data.locations};
 
-            console.log(vdata); //for debugging
+            //console.log(vdata); //for debugging
 
             if(json_data.userID != "admin"){
               htmlgenerator(json_data.tableData);
@@ -99,7 +124,13 @@ function ajaxCall(){
             mymap.addLayer(heatmapLayer);
         }
     }
-};
+    var isStill = document.getElementById("stillValue").value="STILL";
+    var isTilting = document.getElementById("tiltingValue").value="TILTING";
+    var isOnFoot = document.getElementById("onFootValue").value="ON_FOOT";
+    var isInVehicle = document.getElementById("inVehicleValue").value="IN_VEHICLE";
+    var isOnBicycle = document.getElementById("onBicycleValue").value="ON_BICYCLE";
+    var isUnknown = document.getElementById("unknownValue").value="UNKNOWN";
+  };
 
 function htmlgenerator(data){
   var analysisContainerData = document.getElementById("analysisTableData");

@@ -32,12 +32,31 @@ $dayTo = $_POST['dayEnd'];
 $hourFrom = $_POST['hourStart'];
 $hourTo = $_POST['hourEnd'];
 
+$isStill = $_POST['isStill'];
+$isTilting = $_POST['isTilting'];
+$isOnFoot = $_POST['isOnFoot'];
+$isInVehicle = $_POST['isInVehicle'];
+$isOnBicycle = $_POST['isOnBicycle'];
+$isUnknown = $_POST['isUnknown'];
+
+$moveArray = array($isStill, $isTilting, $isOnFoot, $isInVehicle, $isOnBicycle, $isUnknown);
+$sqlMoves = "";
+
+for ($i = 0; $i < count($moveArray); $i++){
+  if ($moveArray[$i] !== "false"){
+    $sqlMoves = $sqlMoves ."type = '". $moveArray[$i] . "' OR ";
+  }
+}
+$sqlMoves = substr($sqlMoves, 0, -4);
+$sqlMoves = "(" . $sqlMoves . ")";
+
 /*synartisi gia na doulevoun ta filters akoma kai otan $monthFrom > $monthTo
 H monh allagh pou xreiazetai sthn sql einai to AND na ginetai OR
 Douleuei kanonika, xreiazetai kalytero onoma, opws kai oi metavlites
 Profanws gia to etos den exei nohma
 */
-function isLangerThan($x, $y){
+
+function karousoFunction($x, $y){
   if($x > $y){
     return "OR";
   } else{
@@ -46,9 +65,9 @@ function isLangerThan($x, $y){
 }
 
 //allagh onomatwn
-$mines = isLangerThan($monthFrom, $monthTo); 
-$meres = isLangerThan($dayFrom, $dayTo);
-$ores = isLangerThan($hourFrom, $hourTo);
+$mines = karousoFunction($monthFrom, $monthTo); 
+$meres = karousoFunction($dayFrom, $dayTo);
+$ores = karousoFunction($hourFrom, $hourTo);
 
 //allagh onomatwn mesa sto query
 $sql = "SELECT latitude, longtitude, accuracy, type, day, hour FROM userdata WHERE
@@ -66,6 +85,9 @@ if($userid != 'admin'){
   $sql = $sql . $sqlAdminExtra;
 }
 
+if ($sqlMoves != "()"){
+  $sql = $sql . " AND " . $sqlMoves;
+}
 
 function getDataFromDB($connection, $sqlQuery){
 
@@ -109,6 +131,7 @@ function getDataFromDB($connection, $sqlQuery){
     echo ', "tableData" : ';
     echo json_encode($tableData);
     echo '}';
-}
+
+  }
 
 getDataFromDB($conn, $sql);
