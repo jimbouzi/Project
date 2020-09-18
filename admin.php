@@ -42,7 +42,7 @@ session_start();
     <button onclick="return confirm('Are you sure you want to delete the data from the Database?')">Delete Data</button>
   </form>
 
-    <form>
+    <form action="actions/exportaction.php" method="POST">
       <label for="yearFrom">Year from:</label>
       <select name="yearFrom" id="yearFrom">
       </select>
@@ -177,18 +177,20 @@ session_start();
       <br>
 
       <label for='movement' id='movement'> Type of movement
-        <input type='checkbox' id='stillValue' value='STILL' name='movementCheckbox'>Still</input>
-        <input type='checkbox' id='tiltingValue' value='TILTING' name='movementCheckbox'>Tilting</input>
-        <input type='checkbox' id='onFootValue' value='ON_FOOT' name='movementCheckbox'>On Foot</input>
-        <input type='checkbox' id='inVehicleValue' value='IN_VEHICLE' name='movementCheckbox'>In Vehicle</input>
-        <input type='checkbox' id='onBicycleValue' value='ON_BICYCLE' name='movementCheckbox'>On Bicycle</input>
-        <input type='checkbox' id='unknownValue' value='UNKNOWN' name='movementCheckbox'>Unknown</input>
+        <input type='checkbox' id='stillValue' value='STILL' name='movementCheckbox[]'>Still</input>
+        <input type='checkbox' id='tiltingValue' value='TILTING' name='movementCheckbox[]'>Tilting</input>
+        <input type='checkbox' id='onFootValue' value='ON_FOOT' name='movementCheckbox[]'>On Foot</input>
+        <input type='checkbox' id='inVehicleValue' value='IN_VEHICLE' name='movementCheckbox[]'>In Vehicle</input>
+        <input type='checkbox' id='onBicycleValue' value='ON_BICYCLE' name='movementCheckbox[]'>On Bicycle</input>
+        <input type='checkbox' id='unknownValue' value='UNKNOWN' name='movementCheckbox[]'>Unknown</input>
       </label>
 
 
       <br>
 
       <input type='button' onclick = "ajaxCall()" value='Choose Filters'>
+      <br>
+      <button type='submit' name ="exportbutton">Export Data</button>
 
     </form>
 

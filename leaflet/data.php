@@ -65,7 +65,7 @@ function karousoFunction($x, $y){
 }
 
 //allagh onomatwn
-$mines = karousoFunction($monthFrom, $monthTo); 
+$mines = karousoFunction($monthFrom, $monthTo);
 $meres = karousoFunction($dayFrom, $dayTo);
 $ores = karousoFunction($hourFrom, $hourTo);
 
@@ -73,7 +73,7 @@ $ores = karousoFunction($hourFrom, $hourTo);
 $sql = "SELECT latitude, longtitude, accuracy, type, day, hour FROM userdata WHERE
         year>=$yearFrom AND year<=$yearTo AND
         (month >= $monthFrom $mines month <= $monthTo)";
-                
+
 $sqlAdminExtra = " AND (day >= $dayFrom $meres day <= $dayTo)
                    AND (hour >= $hourFrom $ores hour <= $hourTo)";
 
@@ -83,11 +83,14 @@ if($userid != 'admin'){
     $sql = $sql . $sqlUserExtra;
 } else{
   $sql = $sql . $sqlAdminExtra;
+  if ($sqlMoves != "()"){
+    $sql = $sql . " AND " . $sqlMoves;
+  }
 }
-
-if ($sqlMoves != "()"){
+//echo $sql;
+/*if ($sqlMoves != "()"){
   $sql = $sql . " AND " . $sqlMoves;
-}
+}*/
 
 function getDataFromDB($connection, $sqlQuery){
 
@@ -124,7 +127,7 @@ function getDataFromDB($connection, $sqlQuery){
       array_push($tableData, new TableData($type, $percent, $MaxDay, $MaxHour));
     }//pername ta dedomena se neo pinaka me tin morfi pou theloume
 
-    echo '{"userID" : "' ;
+    echo '{"sesUserID" : "' ;
     echo $_SESSION['sesuserId'];
     echo '", "locations" : ';
     echo json_encode($mapData);

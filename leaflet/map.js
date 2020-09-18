@@ -51,7 +51,7 @@ function ajaxCall(){
 
     var monthStart = document.getElementById("monthFrom").value;
     var monthEnd = document.getElementById("monthTo").value;
-    
+
     var dayStart = document.getElementById("dayFrom").value;
     var dayEnd = document.getElementById("dayTo").value;
 
@@ -68,7 +68,7 @@ function ajaxCall(){
     var moveArray = [isStill, isTilting, isOnFoot, isInVehicle, isOnBicycle, isUnknown];
 
     for (var i in moveArray){
-      if(moveArray[i].checked == true){ 
+      if(moveArray[i].checked == true){
         moveArray[i] = moveArray[i].value;
       }else{
         moveArray[i].value = "false";  ///thema
@@ -98,7 +98,7 @@ function ajaxCall(){
     //xreiazotan header, kai allh syntaksi sto send
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     ajax.send(ajaxSendString);
-          
+
     // receiving response from url
     ajax.onreadystatechange = function()
     {
@@ -116,7 +116,7 @@ function ajaxCall(){
 
             //console.log(vdata); //for debugging
 
-            if(json_data.userID != "admin"){
+            if(json_data.sesUserID != "admin"){
               htmlgenerator(json_data.tableData);
             }
 
