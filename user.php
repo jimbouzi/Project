@@ -26,13 +26,9 @@ require 'actions/chartaction.php';
 	<link rel="stylesheet" href="css/button1.css" />
 	<link rel="stylesheet" href="css/button2.css" />
 	<link rel="stylesheet" href="css/filters.css" />
-	
-
-	
-
-
-
-
+  <!--For leaflet.draw -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css"/>
+  
 	   <style>
               #mapid {height: 70%;
                       width: 70%;
@@ -217,10 +213,14 @@ require 'actions/chartaction.php';
 
 	  <script src="javascript/yearDropDown.js"></script>
     <script src="leaflet/leaflet.js"></script>
+    <!--leaflet.draw, prepei na einai meta to leaflet kai prin to heatmap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
+    <!-- --> 
     <script src="heatmap/heatmap.js-master/build/heatmap.js"></script>
     <script src="heatmap/heatmap.js-master/plugins/leaflet-heatmap/leaflet-heatmap.js"></script>
     <script src="leaflet/map.js"> </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    
     <br>
     <form action="actions/logoutaction.php" method="POST">
       <button type="submit" class="button red" id="bt2" name="logoutsubmit">Logout</button>

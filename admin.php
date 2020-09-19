@@ -15,13 +15,16 @@ session_start();
   <title>Admin Page</title>
   <!--To echo Username einai gia na vlepoume an exoume energo session -->
   <h1 style="text-align:center">Welcome to the admin page, Username: <?php echo $_SESSION['sesusername'] ?></h1>
-
+  
   <link rel="stylesheet" href="css/w3css.css" />
   <link rel="stylesheet" href="leaflet/leaflet.css" />
+  <!--For leaflet.draw mono gia user
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css"/>
+  -->
   <style>
     #mapid {
-      height: 50%;
-      width: 50%;
+      height: 70%;
+      width: 70%;
       margin: "auto"
     }
     table, th, td {
@@ -195,11 +198,16 @@ session_start();
     </form>
 
     <script src="leaflet/leaflet.js"></script>
+    
     <script src="heatmap/heatmap.js-master/build/heatmap.js"></script>
     <script src="heatmap/heatmap.js-master/plugins/leaflet-heatmap/leaflet-heatmap.js"></script>
     <script src="leaflet/map.js"> </script>
     <script src="javascript/yearDropDown.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <br>
+    <!--leaflet.draw xreiazetai mono ston user
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
+    -->
     <form action="actions/uploadaction.php" method="POST" enctype="multipart/form-data">
       <input type="file" name="jsonfile" id="myFile">
       <button type="submit" name="uploadsubmit">Upload your json file!</button>
