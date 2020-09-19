@@ -174,6 +174,7 @@ class Parser implements \IteratorAggregate
             }
             if ($currentLevel === $iteratorLevel && $jsonBuffer !== '') {
                 if ($currentPath == $this->jsonPointerPath) {
+                    ini_set('memory_limit', '-1');
                     $value = json_decode($jsonBuffer, true);
                     if ($value === null && $jsonBuffer !== 'null') {
                         $this->error(json_last_error_msg());
