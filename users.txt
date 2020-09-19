@@ -25,3 +25,6 @@ password: theoulis1!
 name: anwteri
 surname: dinami
 email: sympan@paradise.sky
+
+Ανοιξτε το config του Apache απο το xampp και πατήστε στο php.ini. Μετα κάντε ctrl+f upload_max_filesize
+και αυξηστε το (εγω πχ το εβαλα 1000Μ). Το ιδιο και για το post_max_size.

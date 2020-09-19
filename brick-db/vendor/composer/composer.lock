@@ -1,0 +1,60 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "4cc43854bd39426d9b9785a160e3813b",
+    "packages": [
+        {
+            "name": "brick/db",
+            "version": "0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/brick/db.git",
+                "reference": "c522edebc45ee20b3e9261e65f249c3cf8fd0f88"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/brick/db/zipball/c522edebc45ee20b3e9261e65f249c3cf8fd0f88",
+                "reference": "c522edebc45ee20b3e9261e65f249c3cf8fd0f88",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pdo": "*",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "2.*",
+                "phpunit/phpunit": "7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Brick\\Db\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Database tools library",
+            "keywords": [
+                "BulkDeleter",
+                "BulkInserter",
+                "brick",
+                "db",
+                "pdo"
+            ],
+            "time": "2018-11-29T11:51:35+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

@@ -1,4 +1,5 @@
 <?php
+use Brick\Db\Bulk\BulkInserter;
 if (isset($_POST['uploadsubmit'])){
 session_start();
 require 'dbfile.php';
@@ -8,6 +9,12 @@ $strlong1 = array();
 
 require_once (__DIR__.'../../json-machine/vendor/autoload.php');
 
+
+require_once (__DIR__.'../../brick-db/vendor/autoload.php');
+
+
+$pdo = new PDO("mysql:host=$servername;dbname=$dBName", $dBUsername, $dBPassword);
+$inserter = new BulkInserter($pdo, 'userdata', ['userid', 'timestampms', 'latitude', 'longtitude', 'accuracy', 'type', 'confidence', 'year', 'month', 'day', 'hour'], 10000);
 $jsondata = \JsonMachine\JsonMachine::fromFile($_FILES['jsonfile']['tmp_name']);
 
 foreach($jsondata as $property => $valueA){
@@ -39,23 +46,16 @@ foreach($jsondata as $property => $valueA){
 			$mera = date("w", $timest/1000);
 			$wra = date("G", $timest/1000);
 			if(isset($type)){
-				$str1 = "('".$userid."', '".$timest."', ".$lat.", ".$long.", ".$acc.", '".$type."', ".$conf.", ".$xronos.", ".$minas.", ".$mera.", ".$wra.")";
+        $inserter->queue($userid, $timest, $lat, $long, $acc, $type, $conf, $xronos, $minas, $mera, $wra);
 			}
 			else{
-				$str1 = "('".$userid."', '".$timest."', ".$lat.", ".$long.", ".$acc.", NULL, NULL, ".$xronos.", ".$minas.", ".$mera.", ".$wra.")";
+        $inserter->queue($userid, $timest, $lat, $long, $acc, NULL, NULL, $xronos, $minas, $mera, $wra);
 			}
-			array_push($strlong1, $str1);
 	    $timest = $lat = $long = $acc = $type = $conf = $xronos = $minas = $mera = $wra = null;
 		}
  	}
 }
-$insertvalues = implode(", ", $strlong1);
-$sql = "INSERT INTO userdata (userid, timestampms, latitude, longtitude, accuracy, type, confidence, year, month, day, hour) VALUES $insertvalues";
-if (!mysqli_query($conn, $sql)){
-	//echo "Error: " . $sql . "<br>" . mysqli_error($conn), "<br>";
-	header("Location: ../user.php?upload=error");
-	exit();
-}
+$inserter->flush();
 $lastupload = date("d/m/Y");
 $sql = "UPDATE users SET lastupload='$lastupload' WHERE userid='$userid'";
 mysqli_query($conn, $sql);

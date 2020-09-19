@@ -26,9 +26,9 @@ require 'actions/chartaction.php';
 	<link rel="stylesheet" href="css/button1.css" />
 	<link rel="stylesheet" href="css/button2.css" />
 	<link rel="stylesheet" href="css/filters.css" />
-	
 
-	
+
+
 
 
 
@@ -136,12 +136,12 @@ require 'actions/chartaction.php';
 
 	  </div>
 
-        <!--Ayta einai den fainontai sth selida --> 
+        <!--Ayta einai den fainontai sth selida -->
         <select name="dayFrom" id="dayFrom" style="visibility: hidden">
-          <option value=-1>-1 </option>        
+          <option value=-1>-1 </option>
         </select>
         <select name="dayTo" id="dayTo" style="visibility: hidden">
-          <option value=-1>-1 </option>        
+          <option value=-1>-1 </option>
         </select>
         <select name="hourfrom" id="hourFrom" style="visibility: hidden">
           <option value=-1>-1 </option>
@@ -203,7 +203,7 @@ require 'actions/chartaction.php';
           <option value=11>November </option>
           <option value=12>December </option>
         </select>
-		
+
         <input type='button' id="bt1"  onclick = "ajaxCall()" value='Apply Filters'>
       </form>
     </div>
@@ -410,7 +410,7 @@ require 'actions/chartaction.php';
         multiplier = 1 - multiplier;
         var $doc = $(document);
         $object.css({"background-attachment" : "fixed"});
-       
+
       };
 
       $(function(){
