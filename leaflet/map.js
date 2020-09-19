@@ -1,22 +1,56 @@
-let mymap = L.map('mapid')
+let mymap = L.map('mapid', {drawControl: false});
 let osmUrl='https://tile.openstreetmap.org/{z}/{x}/{y}.png';
 let osmAttrib='Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'; //for copyrights, bottom right
 let osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
 mymap.addLayer(osm);
 mymap.setView([38.246242, 21.7350847], 16);
 
-/*let points = [
-  [38.246598, 21.736236],
-  [38.24723, 21.737019],
-  [38.246733, 21.737652],
-  [38.246, 21.737696],
-  [38.246101, 21.736836]
-];
-let polygon = L.polygon(points, {
-  color:"red",
-  fillColor: "red"}).addTo(mymap);
-polygon.bindPopup("Πολλή κίνηση!")
-let center = polygon.getBounds().getCenter();*/
+var editableLayers = new L.FeatureGroup();
+mymap.addLayer(editableLayers);
+
+var drawPluginOptions = {
+  position: 'topright',
+  draw: {
+    polygon: {
+      allowIntersection: true, // Restricts shapes to simple polygons
+      drawError: {
+        color: '#e1e100', // Color the shape will turn when intersects
+        message: '<strong>Oh snap!<strong> you can\'t draw that!' // Message that will show when intersect
+      },
+      shapeOptions: {
+        color: '#97009c'
+      }
+    },
+    // disable toolbar item by setting it to false
+    polyline: false,
+    circle: false, // Turns off this drawing tool
+    rectangle: false,
+    marker: false,
+    },
+  edit: {
+    featureGroup: editableLayers, //REQUIRED!!
+    remove: false
+  }
+};
+
+
+// Initialise the draw control and pass it the FeatureGroup of editable layers
+var drawControl = new L.Control.Draw(drawPluginOptions);
+mymap.addControl(drawControl);
+
+var editableLayers = new L.FeatureGroup();
+mymap.addLayer(editableLayers);
+
+mymap.on('draw:created', function(e) {
+  var type = e.layerType,
+    layer = e.layer;
+
+  if (type === 'marker') {
+    layer.bindPopup('A popup!');
+  }
+
+  editableLayers.addLayer(layer);
+});
 
 //adds draggable marker to map
 let marker = L.marker ([38.246242, 21.7350847], {draggable: 'true'});

@@ -26,19 +26,9 @@ require 'actions/chartaction.php';
 	<link rel="stylesheet" href="css/button1.css" />
 	<link rel="stylesheet" href="css/button2.css" />
 	<link rel="stylesheet" href="css/filters.css" />
-<<<<<<< HEAD
   <!--For leaflet.draw -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css"/>
   
-=======
-
-
-
-
-
-
-
->>>>>>> 0b1a35b681c30f8e6e149fe0d94e6678a85bec18
 	   <style>
               #mapid {height: 70%;
                       width: 70%;
