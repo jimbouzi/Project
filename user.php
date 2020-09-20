@@ -295,68 +295,43 @@ require 'actions/chartaction.php';
 
 
 
-	<div style="background-image: url('img/the-town-bg-02.jpg');  ">
-
-
-    <section id="work" class="tm-section-pad-top">
-      <div class="container tm-container-gallery">
-        <div class="row">
-
-          <div class="text-center col-12">
-              <h2 class="tm-text-primary tm-section-title mb-4" style="color:red;">The Creators</h2>
-              <p class="mx-auto tm-work-description">
-                Below you can see the creators of this amazing application that will save the world! From left to right:  <br>
-                Kostas Gkagiannis <br>
-                Thanos Karousos <br>
-                Dimitris Mpouziotis <br>
-              </p>
-          </div>
-        </div>
+	<section id="contact" class="tm-section-pad-top tm-parallax-2" style="background-color:#005204; ">
+      <div class="container tm-container-contact">
         <div class="row">
             <div class="col-12">
-
-                <div class="mx-auto tm-gallery-container">
-
-                    <div class="grid tm-gallery">
-
-                      <a href="img/gallery-tn-01.png">
-                        <figure class="effect-honey tm-gallery-item">
-
-                          <img src="img/gallery-tn-01.png" alt="Image" class="img-fluid">
-                          <figcaption>
-                            <h2><i>The <span>Memer</span></i></h2>
-                          </figcaption>
-                        </figure>
-						The absolute memer.This guy lives only to make memes.
-                      </a>
-                      <a href="img/gallery-tn-02.png">
-                        <figure class="effect-honey tm-gallery-item">
-                          <img src="img/gallery-tn-02.png" alt="Image" class="img-fluid">
-                          <figcaption>
-                            <h2><i>The <span>Athlete</span></i></h2>
-                          </figcaption>
-                        </figure>
-					100 meters in 10.91 seconds, 200 meters in 21.95...Do i have
-						to say more?
-                      </a>
-                      <a href="img/gallery-tn-03.jpg">
-                        <figure class="effect-honey tm-gallery-item">
-                          <img src="img/gallery-tn-03.jpg" alt="Image" class="img-fluid">
-                          <figcaption>
-                            <h2><i>Drummer</i></h2>
-                          </figcaption>
-                        </figure>
-
-						Picture says it all...
-                      </a>
-
-
-                    </div>
+                <h2 class="mb-4 tm-section-title">Contact Us</h2>
+                <div class="mb-5 tm-underline">
+                  <div class="tm-underline-inner"></div>
                 </div>
+                <p class="mb-5">
+               Below you can see the emails of the creators of this website.<br>
+			   If you are facing any problem,dont hesitate to contact us!
+                </p>
             </div>
-          </div>
-      </div>
-    </section>
+            
+          
+            <div class="col-sm-12 col-md-6 d-flex align-items-center tm-contact-item">
+              <a href="mailto:info@company.co" class="tm-contact-item-link">
+                  <i class="fas fa-3x fa-envelope mr-4"></i>
+                  <span class="mb-0">
+				gkagiannis@gmail.com
+				 </span>
+              </a>              
+            </div>
+ 
+            <div class="col-sm-12 col-md-6 d-flex align-items-center tm-contact-item">
+              <a href="mailto:info@company.co" class="tm-contact-item-link">
+                  <i class="fas fa-3x fa-envelope mr-4"></i>
+                  <span class="mb-0">karousos@gmail.com
+              </a>              
+            </div> 
+            <div class="col-sm-12 col-md-6 d-flex align-items-center tm-contact-item">
+              <a href="mailto:info@company.co" class="tm-contact-item-link">
+                  <i class="fas fa-3x fa-envelope mr-4"></i>
+                  <span class="mb-0">
+				  mpouziotis@gmail.com</span>
+              </a>              
+            </div>
 
 
 
