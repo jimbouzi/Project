@@ -12,16 +12,16 @@ var drawPluginOptions = {
   position: 'topright',
   draw: {
     polygon: {
-      allowIntersection: true, // Restricts shapes to simple polygons
+      allowIntersection: true,
       drawError: {
-        color: '#e1e100', // Color the shape will turn when intersects
-        message: '<strong>Oh snap!<strong> you can\'t draw that!' // Message that will show when intersect
+        color: '#e1e100', 
+        message: '<strong>Oh snap!<strong> you can\'t draw that!'
       },
       shapeOptions: {
         color: '#97009c'
       }
     },
-    // disable toolbar item by setting it to false
+    
     polyline: false,
     circle: false, // Turns off this drawing tool
     rectangle: false,
@@ -33,24 +33,6 @@ var drawPluginOptions = {
   }
 };
 
-
-// Initialise the draw control and pass it the FeatureGroup of editable layers
-var drawControl = new L.Control.Draw(drawPluginOptions);
-mymap.addControl(drawControl);
-
-var editableLayers = new L.FeatureGroup();
-mymap.addLayer(editableLayers);
-
-mymap.on('draw:created', function(e) {
-  var type = e.layerType,
-    layer = e.layer;
-
-  if (type === 'marker') {
-    layer.bindPopup('A popup!');
-  }
-
-  editableLayers.addLayer(layer);
-});
 
 //adds draggable marker to map
 let marker = L.marker ([38.246242, 21.7350847], {draggable: 'true'});
@@ -64,6 +46,56 @@ marker.on("click", markerClick);
 function markerClick(event) {
     this.getPopup().setLatLng(event.latlng).setContent("Coordinates: " + event.latlng.toString());
 }
+
+// Initialise the draw control and pass it the FeatureGroup of editable layers
+var drawControl = new L.Control.Draw(drawPluginOptions);
+mymap.addControl(drawControl);
+
+var editableLayers = new L.FeatureGroup();
+mymap.addLayer(editableLayers);
+
+mymap.on('draw:created', function(e) {
+  var type = e.layerType,
+    layer = e.layer;
+
+  //mallon axristo  
+  if (type === 'marker') {
+    layer.bindPopup('A popup!');
+  }
+
+  editableLayers.addLayer(layer);
+  console.log(layer);
+  console.log(layer._bounds);
+
+  var polyLatLngs = layer._latlngs; 
+  console.log(polyLatLngs);
+
+  
+  
+  /*Prokeitai gia synartisi ray-casting algorithm, me skopo to crop twn dedomenwn
+  apo to polygono, sto upload. en telei, den xrhsimopoieitai kapou. Yparxei mia
+  antistoixh ylopoihsh sto actions/uploadaction.php */
+  function isMarkerInsidePolygon(marker, poly) {
+    var inside = false;
+    var x = marker.getLatLng().lat, y = marker.getLatLng().lng; //shmeio test
+    for (var ii=0;ii<poly.getLatLngs().length;ii++){ //vazei shmeio sto polyPoints 
+        var polyPoints = poly.getLatLngs()[ii];
+        for (var i = 0, j = polyPoints.length - 1; i < polyPoints.length; j = i++) {
+            var xi = polyPoints[i].lat, yi = polyPoints[i].lng;
+            var xj = polyPoints[j].lat, yj = polyPoints[j].lng;
+
+            var intersect = ((yi > y) != (yj > y))
+                && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+            if (intersect) inside = !inside;
+        }
+    }
+
+    return inside;
+};
+  einaiMesa = isMarkerInsidePolygon(marker, layer);
+console.log(einaiMesa);
+
+});
 
 let cfg = { "radius": 40,
             "maxOpacity": 0.8,
@@ -105,13 +137,12 @@ function ajaxCall(){
       if(moveArray[i].checked == true){
         moveArray[i] = moveArray[i].value;
       }else{
-        moveArray[i].value = "false";  ///thema
+        moveArray[i].value = "false";  
         moveArray[i] = moveArray[i].value;
       }
       console.log(moveArray[i]);
     }
-    //edw einai swsto
-
+    
     var ajax = new XMLHttpRequest();
     var method = "POST";
     var url = "leaflet/data.php"
@@ -141,14 +172,10 @@ function ajaxCall(){
         {
 
             let json_data = JSON.parse(this.responseText);
-            //console.log(this.responseText);
-            //console.log(json_data); //for debugging
 
             vdata = {
                 max: 100,
                 data: json_data.locations};
-
-            //console.log(vdata); //for debugging
 
             if(json_data.sesUserID != "admin"){
               htmlgenerator(json_data.tableData);

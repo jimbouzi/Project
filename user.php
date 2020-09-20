@@ -30,6 +30,9 @@ require 'actions/chartaction.php';
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css"/>
   
 	   <style>
+
+              body {background-color: #fffacd;}
+
               #mapid {height: 70%;
                       width: 70%;
                       margin: "auto"
@@ -302,7 +305,10 @@ require 'actions/chartaction.php';
           <div class="text-center col-12">
               <h2 class="tm-text-primary tm-section-title mb-4" style="color:red;">The Creators</h2>
               <p class="mx-auto tm-work-description">
-                Below you can see the creators of this amazing application that will save the world!
+                Below you can see the creators of this amazing application that will save the world! From left to right:  <br>
+                Kostas Gkagiannis <br>
+                Thanos Karousos <br>
+                Dimitris Mpouziotis <br>
               </p>
           </div>
         </div>
@@ -330,7 +336,7 @@ require 'actions/chartaction.php';
                             <h2><i>The <span>Athlete</span></i></h2>
                           </figcaption>
                         </figure>
-					100 meters in 10.91 seconds, 200 meters in 20.95...Do i have
+					100 meters in 10.91 seconds, 200 meters in 21.95...Do i have
 						to say more?
                       </a>
                       <a href="img/gallery-tn-03.jpg">
@@ -341,7 +347,7 @@ require 'actions/chartaction.php';
                           </figcaption>
                         </figure>
 
-						Picture says it all...The guy is like "fuck my life with this retarded school"
+						Picture says it all...
                       </a>
 
 

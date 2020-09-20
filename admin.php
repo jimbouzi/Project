@@ -1,11 +1,11 @@
 <?php
 
 session_start();
-/*if(!isset($_SESSION['sesusername'])){
+if(!isset($_SESSION['sesusername'])){
   header("Location: ../index.php");
   exit();
 }
-*/
+
 ?>
 
 <html>
@@ -14,14 +14,17 @@ session_start();
   <meta charset="UTF-8">
   <title>Admin Page</title>
   <!--To echo Username einai gia na vlepoume an exoume energo session -->
-  <h1 style="text-align:center">Welcome to the admin page, Username: <?php echo $_SESSION['sesusername'] ?></h1>
+  <h1 style="text-align:center">Welcome to the admin page, <?php echo $_SESSION['sesusername'] ?></h1>
   
   <link rel="stylesheet" href="css/w3css.css" />
   <link rel="stylesheet" href="leaflet/leaflet.css" />
-  <!--For leaflet.draw mono gia user
+  <!--For leaflet.draw mono gia user -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css"/>
-  -->
+  
   <style>
+  
+    body {background-color: #f5f5f5;}
+
     #mapid {
       height: 70%;
       width: 70%;
@@ -198,6 +201,8 @@ session_start();
     </form>
 
     <script src="leaflet/leaflet.js"></script>
+    <!--leaflet.draw xrisimopoieitai mono ston user, alla na min vgei apo edw-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
     
     <script src="heatmap/heatmap.js-master/build/heatmap.js"></script>
     <script src="heatmap/heatmap.js-master/plugins/leaflet-heatmap/leaflet-heatmap.js"></script>
@@ -205,9 +210,7 @@ session_start();
     <script src="javascript/yearDropDown.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <br>
-    <!--leaflet.draw xreiazetai mono ston user
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
-    -->
+    
     <form action="actions/uploadaction.php" method="POST" enctype="multipart/form-data">
       <input type="file" name="jsonfile" id="myFile">
       <button type="submit" name="uploadsubmit">Upload your json file!</button>
@@ -396,9 +399,6 @@ session_start();
         <button type="submit" name="logoutsubmit">Logout</button>
       </form>
     </div>
-    <form action="actions/adminVisual.php" method="POST">
-      <button type="submit" name="chartbutton">Chart!</button>
-    </form>
 </body>
 
 </html>

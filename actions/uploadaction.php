@@ -81,3 +81,37 @@ function validDistance($distlat, $distlong) {
 		else
 			return true;
 }
+
+/*/*Prokeitai gia synartisi ray-casting algorithm, me skopo to crop twn dedomenwn
+  apo to polygono, sto upload. en telei, den xrhsimopoieitai kapou. Yparxei mia
+  antistoixh ylopoihsh sto leaflet/map.js */ 
+function isPointInsidePolygon($point, $polygon){
+    $inside = false;
+
+    $polygonPoints = [[0,1], [4,1], [5,6], [3,9]];
+
+    $polyLat = [0, 4, 5, 3];
+    $polyLng = [1, 1, 6, 9];
+
+    $pointLat = 0; //edw tha einai to shmeio kathe fora
+    $pointLng = 0;
+
+    for($ii = 0; $ii< count($polygonPoints); $ii++){
+      $polyPoints = $polygonPoints[$ii];
+    
+      for($i = 0, $j = count($polyPoints - 1); $i < count($polygonPoints); $j= $i++){
+
+        $xi = $polyLat[$i];
+        $yi = $polyLng[$i];
+
+        $xj = $polyLat[j];
+        $yj = $polylng[j];
+
+        $intersect = (($yi > $y) != ($yi >y)) && ($x < ($xj - $xi) * ($y - $yi) / ($yj -$yi) + $xi);
+
+        if($intersect == true){
+          $inside = !inside;
+        }
+      }  
+    }
+}
