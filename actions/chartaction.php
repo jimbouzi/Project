@@ -5,7 +5,7 @@ $ecoarray = array('STILL', 'ON_FOOT', 'WALKING', 'RUNNING', 'ON_BICYCLE');
 $monthlabels = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 $temparray = array_fill(1, 12, array_fill(0, 2, 0));
 $chartdata =array();
-$currmonth = date("m");
+$currmonth = date("m")-0;
 $curryear = date("Y");
 $wholecount = $ecowholecount = 0;
 $userid = $_SESSION['sesuserId'];
@@ -56,8 +56,12 @@ for($a=0; $a<12-date("m"); $a++){
 }
 //ypologismos sinolikou score
 $wholescore = 0;
+$currmonthscore = 0;
 if ($wholecount != 0){
   $wholescore = round(($ecowholecount/$wholecount)*100);
-  $sql = "UPDATE users SET score='$wholescore' WHERE userid='$userid'";
-  mysqli_query($conn, $sql);
 }
+if($temparray[$currmonth][0] != 0){
+  $currmonthscore = round(($temparray[$currmonth][1]/$temparray[$currmonth][0])*100);
+}
+$sql = "UPDATE users SET score='$currmonthscore' WHERE userid='$userid'";
+mysqli_query($conn, $sql);
